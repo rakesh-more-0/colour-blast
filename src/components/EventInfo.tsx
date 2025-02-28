@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Calendar, MapPin, Music, Users } from 'lucide-react';
+import { Calendar, MapPin, Music, Users, X } from 'lucide-react';
 
 const EventInfo = () => {
   const [showMap, setShowMap] = useState(false);

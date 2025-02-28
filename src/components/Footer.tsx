@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-white border-t border-muted pt-16 pb-8">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* About */}
           <div>
             <div className="flex items-center mb-6">
@@ -55,27 +55,6 @@ const Footer = () => {
                 <span className="text-muted-foreground">richpointdigital@gmail.com</span>
               </li>
             </ul>
-          </div>
-          
-          {/* Newsletter */}
-          <div>
-            <h3 className="text-lg font-bold mb-6">Stay Updated</h3>
-            <p className="text-muted-foreground mb-4">Subscribe to our newsletter for updates and special offers</p>
-            <form className="space-y-3">
-              <div className="relative">
-                <input 
-                  type="email" 
-                  placeholder="Your email address" 
-                  className="w-full px-4 py-3 rounded-lg border border-muted focus:outline-none focus:ring-2 focus:ring-holi-purple/50 focus:border-holi-purple"
-                />
-              </div>
-              <button 
-                type="submit" 
-                className="w-full py-3 px-4 bg-holi-gradient text-white rounded-lg font-medium hover:shadow-lg transition-all"
-              >
-                Subscribe
-              </button>
-            </form>
           </div>
         </div>
         
