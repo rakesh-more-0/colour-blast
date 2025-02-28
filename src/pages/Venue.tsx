@@ -4,10 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MapPin, Navigation, Copy, Check } from 'lucide-react';
+import { useMouseGlow } from '../hooks/useMouseGlow';
 
 const Venue = () => {
   const [copied, setCopied] = useState(false);
   const navigate = useNavigate();
+  const { registerElement } = useMouseGlow<HTMLDivElement>({
+    colors: [
+      'rgba(171, 32, 253, 0.5)', // Purple
+      'rgba(255, 119, 71, 0.5)', // Orange
+      'rgba(0, 212, 245, 0.5)'  // Blue
+    ]
+  });
 
   const handleCopyAddress = () => {
     navigator.clipboard.writeText('Balaji Ramji Alhat Ground, Shreeram Chowk, Near River Residency, Jadhavwadi, Chikhali 411062');
@@ -41,7 +49,10 @@ const Venue = () => {
             </h1>
             
             <div className="max-w-4xl mx-auto mb-16">
-              <div className="glass-card p-8 relative">
+              <div 
+                ref={registerElement(0)}
+                className="glass-card p-8 relative transition-all duration-300"
+              >
                 <div className="w-16 h-16 rounded-full bg-holi-gradient absolute -top-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center">
                   <MapPin className="w-8 h-8 text-white" />
                 </div>
@@ -91,13 +102,19 @@ const Venue = () => {
             <div className="max-w-4xl mx-auto text-center">
               <h2 className="text-2xl font-display font-bold mb-6">Getting Here</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                <div className="glass-card p-6">
+                <div 
+                  ref={registerElement(1)}
+                  className="glass-card p-6 transition-all duration-300"
+                >
                   <h3 className="font-bold mb-4">By Car</h3>
                   <p className="text-muted-foreground">
                     Ample parking available on-site. Use navigation apps for the best route.
                   </p>
                 </div>
-                <div className="glass-card p-6">
+                <div 
+                  ref={registerElement(2)}
+                  className="glass-card p-6 transition-all duration-300"
+                >
                   <h3 className="font-bold mb-4">Public Transport</h3>
                   <p className="text-muted-foreground">
                     Multiple bus routes available. The nearest bus stop is Jadhavwadi Bus Stop.

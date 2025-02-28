@@ -1,11 +1,18 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Calendar, MapPin, Users, X } from 'lucide-react';
+import { useMouseGlow } from '../hooks/useMouseGlow';
 
 const EventInfo = () => {
   const [showMap, setShowMap] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const { registerElement } = useMouseGlow<HTMLDivElement>({
+    colors: [
+      'rgba(171, 32, 253, 0.5)', // Purple
+      'rgba(255, 119, 71, 0.5)',  // Orange
+      'rgba(0, 212, 245, 0.5)'    // Blue
+    ],
+    maxDistance: 300
+  });
 
   const scrollToVIPTickets = () => {
     // First scroll to tickets section
@@ -29,57 +36,6 @@ const EventInfo = () => {
     }
   };
 
-  // Track mouse movement to calculate dynamic color effect
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({ x: event.clientX, y: event.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  // Apply the color glow effect to each card based on mouse position
-  useEffect(() => {
-    cardRefs.current.forEach((card, index) => {
-      if (!card) return;
-      
-      const rect = card.getBoundingClientRect();
-      const cardCenterX = rect.left + rect.width / 2;
-      const cardCenterY = rect.top + rect.height / 2;
-      
-      // Calculate distance from mouse to card center
-      const distanceX = mousePosition.x - cardCenterX;
-      const distanceY = mousePosition.y - cardCenterY;
-      const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-      
-      // Maximum distance for effect (in pixels)
-      const maxDistance = 300;
-      
-      if (distance < maxDistance) {
-        // Calculate intensity based on distance (closer = stronger)
-        const intensity = 1 - distance / maxDistance;
-        
-        // Different color for each card
-        const colors = [
-          'rgba(171, 32, 253, 0.5)', // Purple
-          'rgba(255, 119, 71, 0.5)',  // Orange
-          'rgba(0, 212, 245, 0.5)'    // Blue
-        ];
-        
-        // Apply the glow
-        card.style.boxShadow = `0 10px 50px -5px ${colors[index]}`;
-        card.style.transform = `scale(${1 + intensity * 0.05}) translateY(${-intensity * 5}px)`;
-      } else {
-        // Reset when mouse is far away
-        card.style.boxShadow = '';
-        card.style.transform = '';
-      }
-    });
-  }, [mousePosition]);
-
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -88,7 +44,7 @@ const EventInfo = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           {/* Date */}
           <div 
-            ref={el => cardRefs.current[0] = el}
+            ref={registerElement(0)}
             className="glass-card p-6 flex flex-col items-center text-center transition-all duration-300 colorful-shadow"
           >
             <div className="w-16 h-16 rounded-full bg-holi-purple/10 flex items-center justify-center mb-4">
@@ -133,7 +89,7 @@ END:VCALENDAR`;
           
           {/* Location */}
           <div 
-            ref={el => cardRefs.current[1] = el}
+            ref={registerElement(1)}
             className="glass-card p-6 flex flex-col items-center text-center transition-all duration-300 colorful-shadow"
           >
             <div className="w-16 h-16 rounded-full bg-holi-orange/10 flex items-center justify-center mb-4">
@@ -155,7 +111,7 @@ END:VCALENDAR`;
           
           {/* VIP Experience */}
           <div 
-            ref={el => cardRefs.current[2] = el}
+            ref={registerElement(2)}
             className="glass-card p-6 flex flex-col items-center text-center transition-all duration-300 colorful-shadow"
           >
             <div className="w-16 h-16 rounded-full bg-holi-blue/10 flex items-center justify-center mb-4">

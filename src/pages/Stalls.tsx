@@ -3,8 +3,16 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Utensils, Wine, ShoppingBag } from 'lucide-react';
+import { useMouseGlow } from '../hooks/useMouseGlow';
 
 const Stalls = () => {
+  const { registerElement } = useMouseGlow<HTMLDivElement>({
+    colors: [
+      'rgba(171, 32, 253, 0.5)', // Purple
+      'rgba(255, 119, 71, 0.5)'  // Orange
+    ]
+  });
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -17,7 +25,10 @@ const Stalls = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {/* Liquor Stall */}
-              <div className="glass-card p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <div 
+                ref={registerElement(0)}
+                className="glass-card p-8 transition-all duration-300 hover:shadow-xl"
+              >
                 <div className="w-16 h-16 mb-6 rounded-lg bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-md">
                   <Wine className="w-8 h-8 text-holi-purple" />
                 </div>
@@ -46,7 +57,10 @@ const Stalls = () => {
               </div>
               
               {/* Food Court */}
-              <div className="glass-card p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <div 
+                ref={registerElement(1)}
+                className="glass-card p-8 transition-all duration-300 hover:shadow-xl"
+              >
                 <div className="w-16 h-16 mb-6 rounded-lg bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-md">
                   <Utensils className="w-8 h-8 text-holi-orange" />
                 </div>
