@@ -26,8 +26,8 @@ const FeaturesSection = () => {
     {
       icon: <Utensils className="w-10 h-10 text-holi-orange" />,
       title: "Food & Drinks",
-      description: "Food & beverage stalls with a variety of options plus Liquor Bar (18+ Only)",
-      details: "Multiple food stalls featuring a variety of cuisines including street food favorites, chaat, sandwiches, and traditional Holi specialties like gujiya and thandai. The dedicated liquor bar (strictly 18+ with ID verification) will serve beer, cocktails, and other alcoholic beverages."
+      description: "Food & beverage stalls with a variety of options plus Liquor Bar",
+      details: "Multiple food stalls featuring a variety of cuisines including street food favorites, chaat, sandwiches, and traditional Holi specialties like gujiya and thandai. The dedicated liquor bar (with ID verification) will serve beer, cocktails, and other alcoholic beverages."
     },
     {
       icon: <Sparkles className="w-10 h-10 text-holi-yellow" />,
@@ -45,7 +45,7 @@ const FeaturesSection = () => {
       icon: <Shield className="w-10 h-10 text-holi-green" />,
       title: "Entry Process",
       description: "Convenient QR code scanning, wristbands for VIP & liquor access",
-      details: "Smooth entry process with digital ticket validation. QR codes will be scanned at the entrance, and you'll receive colored wristbands based on your ticket type. VIP ticket holders get special wristbands for exclusive area access. Adults 18+ with proper ID will receive additional wristbands for liquor section access."
+      details: "Smooth entry process with digital ticket validation. QR codes will be scanned at the entrance, and you'll receive colored wristbands based on your ticket type. VIP ticket holders get special wristbands for exclusive area access. Adults with proper ID will receive additional wristbands for liquor section access."
     }
   ];
 
