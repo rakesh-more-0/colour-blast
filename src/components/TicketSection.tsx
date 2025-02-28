@@ -1,11 +1,15 @@
 
-import React from 'react';
-import { Check, Star } from 'lucide-react';
+import React, { useState } from 'react';
+import { Check, Star, Ticket, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const TicketSection = () => {
+  const [showTicketModal, setShowTicketModal] = useState(false);
+  const [selectedTicket, setSelectedTicket] = useState<string | null>(null);
+
   const tickets = [
     {
+      id: "single",
       name: "Single Ticket (Stag)",
       price: "₹299",
       features: [
@@ -18,6 +22,7 @@ const TicketSection = () => {
       buttonText: "Get Tickets",
     },
     {
+      id: "couple",
       name: "Couple Ticket",
       price: "₹499",
       features: [
@@ -30,6 +35,7 @@ const TicketSection = () => {
       buttonText: "Get Couple Ticket",
     },
     {
+      id: "group",
       name: "Group Ticket",
       price: "₹1249",
       features: [
@@ -43,6 +49,7 @@ const TicketSection = () => {
       buttonText: "Get Group Ticket",
     },
     {
+      id: "vip",
       name: "VIP Ticket",
       price: "₹1999",
       features: [
@@ -58,8 +65,13 @@ const TicketSection = () => {
     }
   ];
 
+  const handleTicketClick = (ticketId: string) => {
+    setSelectedTicket(ticketId);
+    setShowTicketModal(true);
+  };
+
   return (
-    <section className="py-20 bg-white">
+    <section id="tickets" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="section-title text-center mx-auto">Get Your Tickets</h2>
         <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12">
@@ -70,6 +82,7 @@ const TicketSection = () => {
           {tickets.map((ticket, index) => (
             <div 
               key={index} 
+              id={ticket.id}
               className={`rounded-2xl overflow-hidden transition-all duration-300 transform hover:-translate-y-2 border ${
                 ticket.highlight 
                   ? 'border-holi-purple shadow-xl relative z-10' 
@@ -98,8 +111,8 @@ const TicketSection = () => {
                   ))}
                 </ul>
                 
-                <Link 
-                  to="/tickets" 
+                <button 
+                  onClick={() => handleTicketClick(ticket.id)}
                   className={`w-full block text-center py-3 px-4 rounded-xl font-medium hover:shadow-lg transition-all text-sm ${
                     ticket.highlight
                       ? 'bg-holi-gradient text-white'
@@ -107,7 +120,7 @@ const TicketSection = () => {
                   }`}
                 >
                   {ticket.buttonText}
-                </Link>
+                </button>
               </div>
             </div>
           ))}
@@ -117,6 +130,72 @@ const TicketSection = () => {
           Early bird discounts available for a limited time. <Link to="/contact" className="text-holi-purple font-medium">Book directly via WhatsApp</Link> 9607820101
         </p>
       </div>
+
+      {/* Ticket Purchase Modal */}
+      {showTicketModal && (
+        <div 
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowTicketModal(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl overflow-hidden max-w-md w-full shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-4 border-b flex justify-between items-center">
+              <h3 className="font-bold text-lg">Purchase Tickets</h3>
+              <button 
+                onClick={() => setShowTicketModal(false)}
+                className="p-2 rounded-full hover:bg-muted transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            
+            <div className="p-6">
+              <div className="flex items-center justify-center mb-6">
+                <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center">
+                  <Ticket className="w-8 h-8 text-holi-purple" />
+                </div>
+              </div>
+              
+              <h4 className="text-xl font-bold text-center mb-2">
+                {tickets.find(t => t.id === selectedTicket)?.name}
+              </h4>
+              <p className="text-2xl font-bold text-center mb-6">
+                {tickets.find(t => t.id === selectedTicket)?.price}
+              </p>
+              
+              <div className="space-y-4 mb-6">
+                <div className="rounded-lg bg-purple-50 p-4">
+                  <p className="text-sm text-center">
+                    Tickets can be purchased through the following options. After purchase, you'll receive a QR code that will be scanned at the event entrance.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 gap-3">
+                <a 
+                  href="https://bookmyshow.com" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-holi-gradient text-white py-3 px-4 rounded-xl font-medium text-center"
+                >
+                  BookMyShow
+                </a>
+                
+                <a 
+                  href="https://wa.me/919607820101"
+                  target="_blank"
+                  rel="noopener noreferrer" 
+                  className="w-full bg-white border border-holi-purple text-holi-purple py-3 px-4 rounded-xl font-medium text-center"
+                >
+                  WhatsApp Booking
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

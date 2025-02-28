@@ -1,8 +1,23 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Copy, Check } from 'lucide-react';
 
 const CTASection = () => {
+  const [copied, setCopied] = useState(false);
+  const [animateWhatsApp, setAnimateWhatsApp] = useState(false);
+  
+  const handleCopyNumber = () => {
+    navigator.clipboard.writeText('9607820101');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  
+  const handleWhatsAppClick = () => {
+    setAnimateWhatsApp(true);
+    setTimeout(() => setAnimateWhatsApp(false), 1000);
+  };
+
   return (
     <section className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-holi-gradient opacity-10"></div>
@@ -24,20 +39,42 @@ const CTASection = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link 
               to="/tickets" 
-              className="holi-btn-gradient px-8 py-4 text-lg"
+              className="holi-btn-gradient px-8 py-4 text-lg relative overflow-hidden group"
             >
-              Book Your Tickets Now!
+              <span className="relative z-10">Book Your Tickets Now!</span>
+              <span className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 opacity-20"></span>
             </Link>
             <a 
               href="https://wa.me/919607820101" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="holi-btn-secondary px-8 py-4 text-lg"
+              className={`holi-btn-secondary px-8 py-4 text-lg transition-transform ${animateWhatsApp ? 'scale-95' : ''}`}
+              onClick={handleWhatsAppClick}
             >
               WhatsApp Booking
             </a>
           </div>
-          <p className="mt-6 text-holi-purple font-medium">Limited Passes Available – Get Yours Today!</p>
+          
+          {/* Contact Number with Copy */}
+          <div className="mt-6 flex items-center justify-center">
+            <div className="relative inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-5 py-2 shadow-sm border border-purple-100">
+              <span className="text-holi-purple font-medium mr-2">Call: 9607820101</span>
+              <button 
+                onClick={handleCopyNumber} 
+                className="p-1 rounded-full hover:bg-purple-50 transition-colors"
+                aria-label="Copy phone number"
+              >
+                {copied ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
+              </button>
+              
+              {/* Tooltip */}
+              <div className={`absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded transition-opacity ${copied ? 'opacity-100' : 'opacity-0'}`}>
+                Copied!
+              </div>
+            </div>
+          </div>
+          
+          <p className="mt-2 text-holi-purple font-medium">Limited Passes Available – Get Yours Today!</p>
         </div>
       </div>
     </section>

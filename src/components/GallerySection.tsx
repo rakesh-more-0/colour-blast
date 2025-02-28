@@ -1,9 +1,9 @@
 
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const GallerySection = () => {
-  // Placeholder images - would be replaced with actual Holi celebration images
+  // Gallery images - using better Holi celebration images
   const images = [
     "https://images.unsplash.com/photo-1625596570079-76a1878fa26d?q=80&w=2070&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1615553186910-e9084bed9ff2?q=80&w=2070&auto=format&fit=crop",
@@ -12,6 +12,8 @@ const GallerySection = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImage, setModalImage] = useState("");
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
@@ -19,6 +21,17 @@ const GallerySection = () => {
 
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+  };
+
+  const openModal = (image: string) => {
+    setModalImage(image);
+    setModalOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    document.body.style.overflow = 'auto';
   };
 
   return (
@@ -36,12 +49,20 @@ const GallerySection = () => {
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {images.map((image, index) => (
-                <img 
+                <div 
                   key={index} 
-                  src={image} 
-                  alt={`Holi celebration ${index + 1}`} 
-                  className="w-full h-full object-cover flex-shrink-0"
-                />
+                  className="w-full h-full flex-shrink-0 cursor-pointer relative group"
+                  onClick={() => openModal(image)}
+                >
+                  <img 
+                    src={image} 
+                    alt={`Holi celebration ${index + 1}`} 
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                    <span className="text-white font-medium">Click to enlarge</span>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -49,6 +70,7 @@ const GallerySection = () => {
           <button 
             onClick={goToPrevious}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-lg hover:bg-white transition-all z-10"
+            aria-label="Previous image"
           >
             <ChevronLeft size={24} />
           </button>
@@ -56,6 +78,7 @@ const GallerySection = () => {
           <button 
             onClick={goToNext}
             className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-lg hover:bg-white transition-all z-10"
+            aria-label="Next image"
           >
             <ChevronRight size={24} />
           </button>
@@ -71,7 +94,47 @@ const GallerySection = () => {
             ))}
           </div>
         </div>
+
+        {/* Image thumbnails that are clickable */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 max-w-5xl mx-auto">
+          {images.map((image, index) => (
+            <div 
+              key={`thumb-${index}`} 
+              className="relative aspect-[4/3] rounded-lg overflow-hidden cursor-pointer transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              onClick={() => openModal(image)}
+            >
+              <img 
+                src={image} 
+                alt={`Thumbnail ${index + 1}`} 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-holi-gradient opacity-0 hover:opacity-30 transition-opacity duration-300"></div>
+            </div>
+          ))}
+        </div>
       </div>
+
+      {/* Fullscreen image modal */}
+      {modalOpen && (
+        <div 
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={closeModal}
+        >
+          <button 
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+            onClick={closeModal}
+            aria-label="Close modal"
+          >
+            <X size={24} className="text-white" />
+          </button>
+          <img 
+            src={modalImage} 
+            alt="Enlarged gallery image" 
+            className="max-w-full max-h-[90vh] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   );
 };
