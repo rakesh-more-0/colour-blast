@@ -19,6 +19,7 @@ const TicketSection = () => {
       ],
       highlight: false,
       buttonText: "Get Tickets",
+      priceSubtext: "per person"
     },
     {
       id: "couple",
@@ -32,6 +33,7 @@ const TicketSection = () => {
       ],
       highlight: false,
       buttonText: "Get Couple Ticket",
+      priceSubtext: "per couple"
     },
     {
       id: "group",
@@ -46,6 +48,7 @@ const TicketSection = () => {
       ],
       highlight: false,
       buttonText: "Get Group Ticket",
+      priceSubtext: "per group of 5"
     },
     {
       id: "vip",
@@ -62,6 +65,7 @@ const TicketSection = () => {
       ],
       highlight: false,
       buttonText: "Get VIP Ticket",
+      priceSubtext: "per group of 5"
     }
   ];
 
@@ -99,7 +103,7 @@ const TicketSection = () => {
                 <h3 className="text-xl font-display font-bold mb-2">{ticket.name}</h3>
                 <div className="mb-4">
                   <span className="text-3xl font-bold">{ticket.price}</span>
-                  <span className="text-muted-foreground ml-1 text-sm">per group/person</span>
+                  <span className="text-muted-foreground ml-1 text-sm">{ticket.priceSubtext}</span>
                 </div>
                 
                 <ul className="space-y-2 mb-6 min-h-[180px]">
