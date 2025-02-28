@@ -21,7 +21,7 @@ const Stalls = () => {
                 <div className="w-16 h-16 mb-6 rounded-lg bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-md">
                   <Wine className="w-8 h-8 text-holi-purple" />
                 </div>
-                <h3 className="text-2xl font-display font-bold mb-4">Liquor Bar (21+)</h3>
+                <h3 className="text-2xl font-display font-bold mb-4">Liquor Bar</h3>
                 <p className="text-muted-foreground mb-4">
                   Enjoy premium drinks at our dedicated liquor bar. Valid ID required for entry.
                 </p>
@@ -43,9 +43,6 @@ const Stalls = () => {
                     <span>Dedicated bar staff</span>
                   </li>
                 </ul>
-                <p className="text-sm bg-holi-purple/10 p-3 rounded-lg">
-                  <strong>Note:</strong> All attendees must be 21+ with valid ID to purchase alcohol
-                </p>
               </div>
               
               {/* Food Court */}
@@ -79,26 +76,6 @@ const Stalls = () => {
                     <span>Multiple food vendors</span>
                   </li>
                 </ul>
-              </div>
-            </div>
-            
-            <div className="mt-16">
-              <h2 className="text-3xl font-display font-bold text-center mb-8">
-                Stall Inquiries
-              </h2>
-              <div className="text-center max-w-2xl mx-auto">
-                <p className="text-lg text-muted-foreground mb-8">
-                  Interested in setting up a food, beverage, or merchandise stall at Colour Blast 2025? Contact us for stall booking information and rates.
-                </p>
-                <a 
-                  href="https://wa.me/919607820101"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="holi-btn-gradient inline-flex items-center"
-                >
-                  <ShoppingBag className="mr-2" size={18} />
-                  Contact for Stall Booking
-                </a>
               </div>
             </div>
           </div>
