@@ -137,7 +137,7 @@ const About = () => {
             </div>
             
             <div className="mt-16">
-              <h2 className="text-3xl font-display font-bold text-center mb-12">LIQUOR BAR (21 plus)</h2>
+              <h2 className="text-3xl font-display font-bold text-center mb-12">LIQUOR BAR</h2>
               
               <div className="glass-card p-6 max-w-xl mx-auto">
                 <div className="flex items-center justify-center mb-6">
