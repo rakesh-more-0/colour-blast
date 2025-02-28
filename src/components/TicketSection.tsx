@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import { Check, Star, Ticket, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const TicketSection = () => {
   const [showTicketModal, setShowTicketModal] = useState(false);
@@ -127,7 +126,7 @@ const TicketSection = () => {
         </div>
         
         <p className="text-center text-muted-foreground mt-10">
-          Early bird discounts available for a limited time. <Link to="/contact" className="text-holi-purple font-medium">Book directly via WhatsApp</Link> 9607820101
+          Early bird discounts available for a limited time. <a href="https://wa.me/919607820101" target="_blank" rel="noopener noreferrer" className="text-holi-purple font-medium">Book directly via WhatsApp</a> 9607820101
         </p>
       </div>
 

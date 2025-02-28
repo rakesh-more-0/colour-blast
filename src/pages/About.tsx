@@ -2,10 +2,27 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Music, PaintBucket, Droplets, Camera, Utensils, Users, Wine } from 'lucide-react';
 
 const About = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path: string) => {
+    if (path.startsWith('/#')) {
+      navigate('/');
+      setTimeout(() => {
+        const id = path.substring(2);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      navigate(path);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -137,7 +154,12 @@ const About = () => {
             </div>
             
             <div className="flex justify-center mt-12">
-              <Link to="/#tickets" className="holi-btn-gradient">Book Your Tickets Now</Link>
+              <div 
+                onClick={() => handleNavigate('/#tickets')} 
+                className="holi-btn-gradient cursor-pointer"
+              >
+                Book Your Tickets Now
+              </div>
             </div>
           </div>
         </section>

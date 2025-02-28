@@ -4,11 +4,12 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Copy, Check, Instagram, Phone, Mail } from 'lucide-react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const FAQ = () => {
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const navigate = useNavigate();
 
   const handleCopyPhone = () => {
     navigator.clipboard.writeText('9607820101');
@@ -20,6 +21,21 @@ const FAQ = () => {
     navigator.clipboard.writeText('richpointdigital@gmail.com');
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const handleNavigate = (path: string) => {
+    if (path.startsWith('/#')) {
+      navigate('/');
+      setTimeout(() => {
+        const id = path.substring(2);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      navigate(path);
+    }
   };
 
   const faqs = [
@@ -148,9 +164,12 @@ const FAQ = () => {
               </div>
               
               <div className="flex justify-center mt-12">
-                <Link to="/#tickets" className="holi-btn-gradient">
+                <div 
+                  onClick={() => handleNavigate('/#tickets')}
+                  className="holi-btn-gradient cursor-pointer"
+                >
                   Book Your Tickets Now
-                </Link>
+                </div>
               </div>
             </div>
           </div>

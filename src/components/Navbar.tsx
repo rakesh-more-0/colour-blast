@@ -1,11 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +18,25 @@ const Navbar = () => {
   }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+  
+  const handleNavClick = (path: string) => {
+    setIsOpen(false);
+    
+    if (path.startsWith('/#')) {
+      // Handle anchor links
+      navigate('/');
+      setTimeout(() => {
+        const id = path.substring(2);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // Regular navigation
+      navigate(path);
+    }
+  };
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -31,24 +51,24 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="flex items-center">
+            <div onClick={() => navigate('/')} className="flex items-center cursor-pointer">
               <div className="w-12 h-12 bg-holi-gradient rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-xl">C</span>
               </div>
               <span className="ml-3 text-xl font-display font-bold">Colour<span className="text-holi-purple">Blast</span></span>
-            </Link>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-1 items-center">
             {navLinks.map((link) => (
-              <Link 
+              <div 
                 key={link.name} 
-                to={link.path} 
-                className="nav-link"
+                onClick={() => handleNavClick(link.path)}
+                className="nav-link cursor-pointer"
               >
                 {link.name}
-              </Link>
+              </div>
             ))}
           </nav>
 
@@ -62,9 +82,12 @@ const Navbar = () => {
             >
               Follow Us
             </a>
-            <Link to="/#tickets" className="holi-btn-gradient">
+            <div 
+              onClick={() => handleNavClick('/#tickets')} 
+              className="holi-btn-gradient cursor-pointer"
+            >
               Book Tickets
-            </Link>
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -84,14 +107,13 @@ const Navbar = () => {
         <div className="bg-white/95 backdrop-blur-md shadow-lg pt-2 pb-4 px-4">
           <nav className="flex flex-col space-y-3">
             {navLinks.map((link) => (
-              <Link 
+              <div 
                 key={link.name} 
-                to={link.path} 
-                className="py-3 px-4 text-foreground hover:bg-muted rounded-lg font-medium"
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleNavClick(link.path)}
+                className="py-3 px-4 text-foreground hover:bg-muted rounded-lg font-medium cursor-pointer"
               >
                 {link.name}
-              </Link>
+              </div>
             ))}
             <div className="grid grid-cols-2 gap-3 mt-4">
               <a 
@@ -103,13 +125,12 @@ const Navbar = () => {
               >
                 Follow Us
               </a>
-              <Link 
-                to="/#tickets" 
-                className="holi-btn-gradient text-center py-2"
-                onClick={() => setIsOpen(false)}
+              <div 
+                onClick={() => handleNavClick('/#tickets')}
+                className="holi-btn-gradient text-center py-2 cursor-pointer"
               >
                 Book Tickets
-              </Link>
+              </div>
             </div>
           </nav>
         </div>
