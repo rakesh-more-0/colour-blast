@@ -5,6 +5,28 @@ import { Calendar, MapPin, Users, X } from 'lucide-react';
 const EventInfo = () => {
   const [showMap, setShowMap] = useState(false);
 
+  const scrollToVIPTickets = () => {
+    // First scroll to tickets section
+    const ticketsSection = document.getElementById('tickets');
+    if (ticketsSection) {
+      ticketsSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // Then scroll to VIP ticket after a slight delay to ensure tickets section is loaded
+      setTimeout(() => {
+        const vipTicket = document.getElementById('vip');
+        if (vipTicket) {
+          vipTicket.scrollIntoView({ behavior: 'smooth' });
+          
+          // Highlight the VIP ticket with a pulse animation
+          vipTicket.classList.add('animate-pulse');
+          setTimeout(() => {
+            vipTicket.classList.remove('animate-pulse');
+          }, 2000);
+        }
+      }, 500);
+    }
+  };
+
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-4">
@@ -83,12 +105,12 @@ END:VCALENDAR`;
             </p>
             
             {/* VIP Tickets button */}
-            <a 
-              href="/tickets#vip" 
+            <button 
               className="mt-4 text-sm border border-holi-blue text-holi-blue rounded-full px-4 py-2 hover:bg-holi-blue hover:text-white transition-all"
+              onClick={scrollToVIPTickets}
             >
               Get VIP Tickets
-            </a>
+            </button>
           </div>
         </div>
       </div>
