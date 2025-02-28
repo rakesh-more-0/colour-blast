@@ -49,9 +49,9 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center lg:justify-start mt-8 opacity-0 animate-fade-in" style={{ animationDelay: '0.9s' }}>
-              <Link to="/tickets" className="holi-btn-gradient">
-                Buy Tickets
-              </Link>
+              <a href="#tickets" className="holi-btn-gradient">
+                Book Tickets
+              </a>
               <Link to="/about" className="holi-btn-secondary">
                 Learn More
               </Link>
