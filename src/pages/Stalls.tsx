@@ -1,22 +1,28 @@
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Utensils, Wine, ShoppingBag } from 'lucide-react';
 import { useMouseGlow } from '../hooks/useMouseGlow';
 
 const Stalls = () => {
-  const { registerElement } = useMouseGlow<HTMLDivElement>({
+  const mainRef = useRef<HTMLDivElement>(null);
+  const { containerRef } = useMouseGlow<HTMLDivElement>({
     colors: [
       'rgba(171, 32, 253, 0.5)', // Purple
       'rgba(255, 119, 71, 0.5)'  // Orange
-    ]
+    ],
+    selector: '.glass-card',
+    maxDistance: 350
   });
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-24" ref={(el) => {
+        mainRef.current = el;
+        containerRef(el);
+      }}>
         <section className="py-16 md:py-24 bg-white">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-display font-bold text-center mb-12">
@@ -26,7 +32,6 @@ const Stalls = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {/* Liquor Stall */}
               <div 
-                ref={registerElement(0)}
                 className="glass-card p-8 transition-all duration-300 hover:shadow-xl"
               >
                 <div className="w-16 h-16 mb-6 rounded-lg bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-md">
@@ -58,7 +63,6 @@ const Stalls = () => {
               
               {/* Food Court */}
               <div 
-                ref={registerElement(1)}
                 className="glass-card p-8 transition-all duration-300 hover:shadow-xl"
               >
                 <div className="w-16 h-16 mb-6 rounded-lg bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-md">

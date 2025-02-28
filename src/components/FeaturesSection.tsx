@@ -1,6 +1,7 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Music, Utensils, PaintBucket, Sparkles, Camera, Shield, X } from 'lucide-react';
+import { useMouseGlow } from '../hooks/useMouseGlow';
 
 const FeaturesSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -8,6 +9,17 @@ const FeaturesSection = () => {
     title: "", 
     description: "", 
     icon: null
+  });
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { containerRef } = useMouseGlow<HTMLDivElement>({
+    colors: [
+      'rgba(171, 32, 253, 0.5)', // Purple
+      'rgba(255, 119, 71, 0.5)', // Orange
+      'rgba(0, 212, 245, 0.5)',  // Blue
+    ],
+    selector: '.glass-card', // Target all glass cards
+    maxDistance: 350
   });
 
   const features = [
@@ -59,7 +71,10 @@ const FeaturesSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-purple-50">
+    <section className="py-20 bg-gradient-to-b from-white to-purple-50" ref={(el) => {
+      sectionRef.current = el;
+      containerRef(el);
+    }}>
       <div className="container mx-auto px-4">
         <h2 className="section-title text-center mx-auto">Festival Highlights</h2>
         
