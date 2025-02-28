@@ -1,10 +1,34 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Check, Star, Ticket, X } from 'lucide-react';
+import { toast } from "@/components/ui/use-toast";
 
 const TicketSection = () => {
   const [showTicketModal, setShowTicketModal] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState<string | null>(null);
+  const [colorPowders, setColorPowders] = useState<Array<{ color: string; x: number; y: number; size: number; delay: number }>>([]);
+
+  // Generate random color powders for background effect
+  useEffect(() => {
+    const colors = [
+      'bg-holi-pink',
+      'bg-holi-purple',
+      'bg-holi-blue',
+      'bg-holi-orange',
+      'bg-holi-yellow',
+      'bg-holi-green',
+    ];
+    
+    const powders = Array.from({ length: 12 }, (_, i) => ({
+      color: colors[Math.floor(Math.random() * colors.length)],
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 20 + 10,
+      delay: Math.random() * 5,
+    }));
+    
+    setColorPowders(powders);
+  }, []);
 
   const tickets = [
     {
@@ -72,26 +96,57 @@ const TicketSection = () => {
   const handleTicketClick = (ticketId: string) => {
     setSelectedTicket(ticketId);
     setShowTicketModal(true);
+    
+    // Show a toast notification
+    toast({
+      title: "Ticket Selected",
+      description: `You've selected the ${tickets.find(t => t.id === ticketId)?.name}`,
+      variant: "default",
+    });
   };
 
   return (
-    <section id="tickets" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="section-title text-center mx-auto">Get Your Tickets</h2>
-        <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12">
-          Secure your spot at Pune's most vibrant Holi celebration with our ticket packages designed for every festival-goer
-        </p>
+    <section id="tickets" className="py-20 relative overflow-hidden">
+      {/* Color powder background elements */}
+      {colorPowders.map((powder, index) => (
+        <div
+          key={index}
+          className={`absolute ${powder.color} opacity-20 rounded-full blur-3xl`}
+          style={{
+            width: `${powder.size}rem`,
+            height: `${powder.size}rem`,
+            left: `${powder.x}%`,
+            top: `${powder.y}%`,
+            animationDelay: `${powder.delay}s`,
+          }}
+        />
+      ))}
+      
+      {/* Semi-transparent overlay for better text readability */}
+      <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-12">
+          <h2 className="section-title text-center mx-auto mb-6">
+            Get Your Tickets
+            <span className="absolute -top-6 -right-6 w-12 h-12 bg-holi-yellow opacity-70 rounded-full blur-md animate-ping"></span>
+            <span className="absolute -bottom-6 -left-6 w-10 h-10 bg-holi-pink opacity-70 rounded-full blur-md animate-pulse"></span>
+          </h2>
+          <p className="text-center text-muted-foreground max-w-2xl mx-auto">
+            Secure your spot at Pune's most vibrant Holi celebration with our ticket packages designed for every festival-goer
+          </p>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           {tickets.map((ticket, index) => (
             <div 
               key={index} 
               id={ticket.id}
-              className={`rounded-2xl overflow-hidden transition-all duration-300 transform hover:-translate-y-2 border ${
+              className={`rounded-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-3 hover:scale-105 border ${
                 ticket.highlight 
                   ? 'border-holi-purple shadow-xl relative z-10' 
-                  : 'border-muted shadow-lg'
-              } opacity-0 animate-fade-in`}
+                  : 'border-white/50 shadow-lg'
+              } opacity-0 animate-fade-in bg-white/70 backdrop-blur-md`}
               style={{ animationDelay: `${0.2 * index}s` }}
             >
               {ticket.highlight && (
@@ -99,54 +154,81 @@ const TicketSection = () => {
                   <Star size={14} className="mr-1" /> Best Value
                 </div>
               )}
-              <div className={`p-6 ${ticket.highlight ? 'bg-white' : 'bg-white'}`}>
-                <h3 className="text-xl font-display font-bold mb-2">{ticket.name}</h3>
-                <div className="mb-4">
-                  <span className="text-3xl font-bold">{ticket.price}</span>
-                  <span className="text-muted-foreground ml-1 text-sm">{ticket.priceSubtext}</span>
+              
+              {/* Decorative color splashes */}
+              <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-holi-pink opacity-70 blur-sm"></div>
+              <div className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full bg-holi-green opacity-70 blur-sm"></div>
+              
+              <div className="p-6 relative">
+                <div className="relative z-10">
+                  <h3 className="text-xl font-display font-bold mb-2 text-gradient">{ticket.name}</h3>
+                  <div className="mb-4 relative">
+                    <span className="text-3xl font-bold">{ticket.price}</span>
+                    <span className="text-muted-foreground ml-1 text-sm">{ticket.priceSubtext}</span>
+                  </div>
+                  
+                  <ul className="space-y-2 mb-6 min-h-[180px]">
+                    {ticket.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <Check size={16} className={`mr-2 flex-shrink-0 mt-1 ${
+                          index % 4 === 0 ? 'text-holi-blue' :
+                          index % 4 === 1 ? 'text-holi-purple' :
+                          index % 4 === 2 ? 'text-holi-orange' :
+                          'text-holi-green'
+                        }`} />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <button 
+                    onClick={() => handleTicketClick(ticket.id)}
+                    className={`w-full block text-center py-3 px-4 rounded-xl font-medium hover:shadow-lg transition-all text-sm relative overflow-hidden group`}
+                    style={{
+                      background: 'linear-gradient(45deg, var(--tw-gradient-from), var(--tw-gradient-to))',
+                      '--tw-gradient-from': index % 4 === 0 ? '#00D4F5' : 
+                                           index % 4 === 1 ? '#AB20FD' : 
+                                           index % 4 === 2 ? '#FF7747' : 
+                                           '#FFD233',
+                      '--tw-gradient-to': index % 4 === 0 ? '#AB20FD' : 
+                                         index % 4 === 1 ? '#FF3EA5' : 
+                                         index % 4 === 2 ? '#FFD233' : 
+                                         '#00FF94',
+                      color: 'white'
+                    } as React.CSSProperties}
+                  >
+                    <span className="relative z-10">{ticket.buttonText}</span>
+                    <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></span>
+                  </button>
                 </div>
-                
-                <ul className="space-y-2 mb-6 min-h-[180px]">
-                  {ticket.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start">
-                      <Check size={16} className={`mr-2 flex-shrink-0 mt-1 ${ticket.highlight ? 'text-holi-purple' : 'text-holi-blue'}`} />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <button 
-                  onClick={() => handleTicketClick(ticket.id)}
-                  className={`w-full block text-center py-3 px-4 rounded-xl font-medium hover:shadow-lg transition-all text-sm ${
-                    ticket.highlight
-                      ? 'bg-holi-gradient text-white'
-                      : 'bg-white border border-muted-foreground/30 text-foreground hover:bg-muted/20'
-                  }`}
-                >
-                  {ticket.buttonText}
-                </button>
               </div>
             </div>
           ))}
         </div>
         
-        <p className="text-center text-muted-foreground mt-10">
-          Early bird discounts available for a limited time. <a href="https://wa.me/919607820101" target="_blank" rel="noopener noreferrer" className="text-holi-purple font-medium">Book directly via WhatsApp</a> 9607820101
+        <p className="text-center text-muted-foreground mt-10 relative">
+          <span className="relative z-10">
+            Early bird discounts available for a limited time. <a href="https://wa.me/919607820101" target="_blank" rel="noopener noreferrer" className="text-holi-purple font-medium hover:text-holi-pink transition-colors">Book directly via WhatsApp</a> 9607820101
+          </span>
         </p>
       </div>
 
       {/* Ticket Purchase Modal */}
       {showTicketModal && (
         <div 
-          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setShowTicketModal(false)}
         >
           <div 
-            className="bg-white rounded-2xl overflow-hidden max-w-md w-full shadow-2xl"
+            className="bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden max-w-md w-full shadow-2xl relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-4 border-b flex justify-between items-center">
-              <h3 className="font-bold text-lg">Purchase Tickets</h3>
+            {/* Decorative elements */}
+            <div className="absolute -top-10 -right-10 w-20 h-20 bg-holi-pink opacity-50 rounded-full blur-xl"></div>
+            <div className="absolute -bottom-10 -left-10 w-20 h-20 bg-holi-blue opacity-50 rounded-full blur-xl"></div>
+            
+            <div className="p-4 border-b flex justify-between items-center relative">
+              <h3 className="font-bold text-lg text-gradient">Purchase Tickets</h3>
               <button 
                 onClick={() => setShowTicketModal(false)}
                 className="p-2 rounded-full hover:bg-muted transition-colors"
@@ -155,34 +237,34 @@ const TicketSection = () => {
               </button>
             </div>
             
-            <div className="p-6">
+            <div className="p-6 relative">
               <div className="flex items-center justify-center mb-6">
-                <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center">
-                  <Ticket className="w-8 h-8 text-holi-purple" />
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-holi-blue via-holi-purple to-holi-pink flex items-center justify-center">
+                  <Ticket className="w-10 h-10 text-white animate-pulse" />
                 </div>
               </div>
               
-              <h4 className="text-xl font-bold text-center mb-2">
+              <h4 className="text-2xl font-bold text-center mb-2 font-display">
                 {tickets.find(t => t.id === selectedTicket)?.name}
               </h4>
-              <p className="text-2xl font-bold text-center mb-6">
+              <p className="text-3xl font-bold text-center mb-6 text-gradient">
                 {tickets.find(t => t.id === selectedTicket)?.price}
               </p>
               
               <div className="space-y-4 mb-6">
-                <div className="rounded-lg bg-purple-50 p-4">
+                <div className="rounded-xl bg-purple-50 p-6 border border-purple-100">
                   <p className="text-sm text-center">
                     Tickets can be purchased through the following options. After purchase, you'll receive a QR code that will be scanned at the event entrance.
                   </p>
                 </div>
               </div>
               
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-4">
                 <a 
                   href="https://bookmyshow.com" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-holi-gradient text-white py-3 px-4 rounded-xl font-medium text-center"
+                  className="w-full bg-holi-gradient text-white py-3 px-4 rounded-xl font-medium text-center hover:shadow-lg hover:shadow-purple-200 transition-all transform hover:-translate-y-1"
                 >
                   BookMyShow
                 </a>
@@ -191,7 +273,7 @@ const TicketSection = () => {
                   href="https://wa.me/919607820101"
                   target="_blank"
                   rel="noopener noreferrer" 
-                  className="w-full bg-white border border-holi-purple text-holi-purple py-3 px-4 rounded-xl font-medium text-center"
+                  className="w-full bg-white border-2 border-holi-purple text-holi-purple py-3 px-4 rounded-xl font-medium text-center hover:bg-holi-purple hover:text-white transition-colors transform hover:-translate-y-1"
                 >
                   WhatsApp Booking
                 </a>
