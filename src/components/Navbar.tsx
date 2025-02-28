@@ -1,11 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, MapPin } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showVenueInfo, setShowVenueInfo] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,6 +22,11 @@ const Navbar = () => {
   
   const handleNavClick = (path: string) => {
     setIsOpen(false);
+    
+    if (path === "/#venue") {
+      setShowVenueInfo(true);
+      return;
+    }
     
     if (path.startsWith('/#')) {
       // Handle anchor links
@@ -135,6 +141,67 @@ const Navbar = () => {
           </nav>
         </div>
       </div>
+
+      {/* Venue Info Popup */}
+      {showVenueInfo && (
+        <div 
+          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
+          onClick={() => setShowVenueInfo(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl overflow-hidden max-w-lg w-full shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-4 border-b flex justify-between items-center">
+              <h3 className="font-bold text-lg">Event Venue</h3>
+              <button 
+                onClick={() => setShowVenueInfo(false)}
+                className="p-2 rounded-full hover:bg-muted transition-colors"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div className="p-6">
+              <div className="flex items-center mb-4">
+                <MapPin className="text-holi-purple mr-2" size={20} />
+                <p className="font-medium">Balaji Ramji Alhat Ground, Shreeram Chowk, Near River Residency, Jadhavwadi, Chikhali 411062</p>
+              </div>
+              
+              <div className="aspect-video w-full mb-4 rounded-lg overflow-hidden">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.3990541546357!2d73.8224977763633!3d18.66183868225945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3c3c3c3c3c3%3A0x3c3c3c3c3c3c3c3c!2sBalaji%20Ramji%20Alhat%20Ground!5e0!3m2!1sen!2sin!4v1620731726373!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={true} 
+                  loading="lazy"
+                  title="Event Location Map"
+                ></iframe>
+              </div>
+              
+              <div className="flex space-x-4">
+                <button 
+                  onClick={() => {
+                    setShowVenueInfo(false);
+                    navigate('/venue');
+                  }}
+                  className="flex-1 py-2 px-4 bg-holi-purple/10 text-holi-purple rounded-lg hover:bg-holi-purple/20 transition-colors"
+                >
+                  Venue Details
+                </button>
+                <a 
+                  href="https://maps.app.goo.gl/SPz5bDmxYZ7PGaxt6?g_st=com.google.maps.preview.copy" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex-1 py-2 px-4 bg-holi-gradient text-white rounded-lg text-center"
+                >
+                  Get Directions
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

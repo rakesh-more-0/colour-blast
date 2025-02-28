@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Calendar, MapPin, Music, Users, X } from 'lucide-react';
+import { Calendar, MapPin, Users, X } from 'lucide-react';
 
 const EventInfo = () => {
   const [showMap, setShowMap] = useState(false);
@@ -10,7 +10,7 @@ const EventInfo = () => {
       <div className="container mx-auto px-4">
         <h2 className="section-title text-center mx-auto">Event Details</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
           {/* Date */}
           <div className="glass-card p-6 flex flex-col items-center text-center transform hover:scale-105 transition-all duration-300 colorful-shadow">
             <div className="w-16 h-16 rounded-full bg-holi-purple/10 flex items-center justify-center mb-4">
@@ -72,27 +72,6 @@ END:VCALENDAR`;
             </button>
           </div>
           
-          {/* Performances */}
-          <div className="glass-card p-6 flex flex-col items-center text-center transform hover:scale-105 transition-all duration-300 colorful-shadow">
-            <div className="w-16 h-16 rounded-full bg-holi-pink/10 flex items-center justify-center mb-4">
-              <Music className="w-8 h-8 text-holi-pink" />
-            </div>
-            <h3 className="text-xl font-display font-bold mb-2">Music & Entertainment</h3>
-            <p className="text-muted-foreground">
-              High-Quality DJ & Music System, Rain Dance Setup, LED Screens & Visual Effects
-            </p>
-            
-            {/* Watch Promo button */}
-            <a 
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="mt-4 text-sm border border-holi-pink text-holi-pink rounded-full px-4 py-2 hover:bg-holi-pink hover:text-white transition-all"
-            >
-              Watch Promo
-            </a>
-          </div>
-          
           {/* VIP Experience */}
           <div className="glass-card p-6 flex flex-col items-center text-center transform hover:scale-105 transition-all duration-300 colorful-shadow">
             <div className="w-16 h-16 rounded-full bg-holi-blue/10 flex items-center justify-center mb-4">
@@ -135,7 +114,7 @@ END:VCALENDAR`;
             </div>
             <div className="aspect-video w-full">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.4015543573907!2d73.82259551489353!3d18.661760987326146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b987beee4e9d%3A0x5d70a548c8a5c01c!2sJadhavwadi%2C%20Chikhali%2C%20Pimpri-Chinchwad%2C%20Maharashtra%20411062!5e0!3m2!1sen!2sin!4v1620731726373!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.3990541546357!2d73.8224977763633!3d18.66183868225945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3c3c3c3c3c3%3A0x3c3c3c3c3c3c3c3c!2sBalaji%20Ramji%20Alhat%20Ground!5e0!3m2!1sen!2sin!4v1620731726373!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
@@ -149,7 +128,7 @@ END:VCALENDAR`;
                 Balaji Ramji Alhat Ground, Shreeram Chowk, Near River Residency, Jadhavwadi, Chikhali 411062
               </p>
               <a 
-                href="https://goo.gl/maps/5fXcRBWXJ7SDRKmL7" 
+                href="https://maps.app.goo.gl/SPz5bDmxYZ7PGaxt6?g_st=com.google.maps.preview.copy" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-holi-gradient text-white px-4 py-2 rounded-lg text-sm font-medium"

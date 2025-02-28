@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MapPin, Navigation, Copy, Check } from 'lucide-react';
@@ -62,7 +62,7 @@ const Venue = () => {
                     </button>
                     
                     <a 
-                      href="https://goo.gl/maps/5fXcRBWXJ7SDRKmL7" 
+                      href="https://maps.app.goo.gl/SPz5bDmxYZ7PGaxt6?g_st=com.google.maps.preview.copy" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center px-4 py-2 bg-holi-gradient text-white rounded-lg shadow-lg hover:shadow-xl transition-all"
@@ -78,7 +78,7 @@ const Venue = () => {
             {/* Google Maps Embed */}
             <div className="rounded-xl overflow-hidden shadow-2xl max-w-5xl mx-auto mb-12 aspect-video">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.4015543573907!2d73.82259551489353!3d18.661760987326146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b987beee4e9d%3A0x5d70a548c8a5c01c!2sJadhavwadi%2C%20Chikhali%2C%20Pimpri-Chinchwad%2C%20Maharashtra%20411062!5e0!3m2!1sen!2sin!4v1620731726373!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.3990541546357!2d73.8224977763633!3d18.66183868225945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3c3c3c3c3c3%3A0x3c3c3c3c3c3c3c3c!2sBalaji%20Ramji%20Alhat%20Ground!5e0!3m2!1sen!2sin!4v1620731726373!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
