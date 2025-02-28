@@ -19,10 +19,7 @@ const Stalls = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-grow pt-24" ref={(el) => {
-        mainRef.current = el;
-        containerRef(el);
-      }}>
+      <main className="flex-grow pt-24" ref={containerRef}>
         <section className="py-16 md:py-24 bg-white">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-display font-bold text-center mb-12">

@@ -45,10 +45,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-grow" ref={(el) => {
-        mainRef.current = el;
-        containerRef(el);
-      }}>
+      <main className="flex-grow" ref={containerRef}>
         <HeroSection />
         <div id="venue">
           <EventInfo />

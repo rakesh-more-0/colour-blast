@@ -8,7 +8,7 @@ interface GlowOptions {
   defaultColor?: string;
   scaleEffect?: boolean;
   translateEffect?: boolean;
-  selector?: string; // Add a CSS selector to target elements
+  selector?: string; // CSS selector to target elements
 }
 
 export function useMouseGlow<T extends HTMLElement>(options: GlowOptions = {}) {
