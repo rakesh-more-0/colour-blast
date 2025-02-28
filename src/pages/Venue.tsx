@@ -1,16 +1,33 @@
 
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MapPin, Navigation, Copy, Check } from 'lucide-react';
 
 const Venue = () => {
   const [copied, setCopied] = useState(false);
+  const navigate = useNavigate();
 
   const handleCopyAddress = () => {
     navigator.clipboard.writeText('Balaji Ramji Alhat Ground, Shreeram Chowk, Near River Residency, Jadhavwadi, Chikhali 411062');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleNavigate = (path: string) => {
+    if (path.startsWith('/#')) {
+      navigate('/');
+      setTimeout(() => {
+        const id = path.substring(2);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      navigate(path);
+    }
   };
 
   return (
@@ -88,9 +105,12 @@ const Venue = () => {
                 </div>
               </div>
               
-              <Link to="/#tickets" className="holi-btn-gradient">
+              <div 
+                onClick={() => handleNavigate('/#tickets')} 
+                className="holi-btn-gradient cursor-pointer"
+              >
                 Book Your Tickets Now
-              </Link>
+              </div>
             </div>
           </div>
         </section>
