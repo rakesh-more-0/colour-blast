@@ -34,9 +34,9 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center">
               <div className="w-12 h-12 bg-holi-gradient rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">H</span>
+                <span className="text-white font-bold text-xl">C</span>
               </div>
-              <span className="ml-3 text-xl font-display font-bold">Holi<span className="text-holi-purple">Party</span></span>
+              <span className="ml-3 text-xl font-display font-bold">Colour<span className="text-holi-purple">Blast</span></span>
             </Link>
           </div>
 
@@ -55,9 +55,14 @@ const Navbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            <Link to="/lineup" className="holi-btn-secondary">
-              Line Up
-            </Link>
+            <a 
+              href="https://instagram.com/varad_event" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="holi-btn-secondary"
+            >
+              Follow Us
+            </a>
             <Link to="/tickets" className="holi-btn-gradient">
               Book Tickets
             </Link>
@@ -90,10 +95,20 @@ const Navbar = () => {
               </Link>
             ))}
             <div className="grid grid-cols-2 gap-3 mt-4">
-              <Link to="/lineup" className="holi-btn-secondary text-center py-2">
-                Line Up
-              </Link>
-              <Link to="/tickets" className="holi-btn-gradient text-center py-2">
+              <a 
+                href="https://instagram.com/varad_event" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="holi-btn-secondary text-center py-2"
+                onClick={() => setIsOpen(false)}
+              >
+                Follow Us
+              </a>
+              <Link 
+                to="/tickets" 
+                className="holi-btn-gradient text-center py-2"
+                onClick={() => setIsOpen(false)}
+              >
                 Book Tickets
               </Link>
             </div>

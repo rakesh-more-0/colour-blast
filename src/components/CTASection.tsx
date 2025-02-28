@@ -18,7 +18,7 @@ const CTASection = () => {
             Ready to Experience the Most Colorful Day?
           </h2>
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Join us for an unforgettable celebration of colors, music, dance, and joy at Pune's biggest Holi party
+            Join us for an unforgettable celebration of colors, music, dance, and joy at Pune's biggest Colour Blast
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -28,12 +28,14 @@ const CTASection = () => {
             >
               Book Your Tickets Now!
             </Link>
-            <Link 
-              to="/contact" 
+            <a 
+              href="https://wa.me/919607820101" 
+              target="_blank" 
+              rel="noopener noreferrer" 
               className="holi-btn-secondary px-8 py-4 text-lg"
             >
-              Contact for Group Bookings
-            </Link>
+              WhatsApp Booking
+            </a>
           </div>
           <p className="mt-6 text-holi-purple font-medium">Limited Passes Available – Get Yours Today!</p>
         </div>

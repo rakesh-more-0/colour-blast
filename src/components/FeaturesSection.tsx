@@ -12,17 +12,17 @@ const FeaturesSection = () => {
     {
       icon: <Music className="w-10 h-10 text-holi-purple" />,
       title: "Music & Entertainment",
-      description: "High-Quality DJ Setup, Live Dhol Performance & LED Screen Visuals"
+      description: "High-Quality DJ & Music System, Rain Dance Setup, LED Screens & Visual Effects"
     },
     {
       icon: <Utensils className="w-10 h-10 text-holi-orange" />,
       title: "Food & Drinks",
-      description: "Thandai, special Holi drinks, food stalls and live counters"
+      description: "Food & beverage stalls with a variety of options plus Liquor Bar (18+ Only)"
     },
     {
       icon: <Sparkles className="w-10 h-10 text-holi-yellow" />,
-      title: "Rain Dance",
-      description: "Cool off in our dedicated rain dance area with water balloons & pichkari zone"
+      title: "Color Blast Countdown",
+      description: "Join the exciting color blast countdown - a spectacular highlight of the event"
     },
     {
       icon: <Camera className="w-10 h-10 text-holi-blue" />,
@@ -31,8 +31,8 @@ const FeaturesSection = () => {
     },
     {
       icon: <Shield className="w-10 h-10 text-holi-green" />,
-      title: "Safety & Management",
-      description: "Security, first aid, separate family & VIP zones, and lost & found desk"
+      title: "Entry Process",
+      description: "Convenient QR code scanning, wristbands for VIP & liquor access"
     }
   ];
 

@@ -26,7 +26,7 @@ const EventInfo = () => {
             </div>
             <h3 className="text-xl font-display font-bold mb-2">Venue</h3>
             <p className="text-muted-foreground">
-              Dehu Alandi Road, Jadhavwadi, Chikhali, Pune
+              Balaji Ramji Alhat Ground, Shreeram Chowk, Near River Residency, Jadhavwadi, Chikhali 411062
             </p>
           </div>
           
@@ -35,9 +35,9 @@ const EventInfo = () => {
             <div className="w-16 h-16 rounded-full bg-holi-pink/10 flex items-center justify-center mb-4">
               <Music className="w-8 h-8 text-holi-pink" />
             </div>
-            <h3 className="text-xl font-display font-bold mb-2">Performances</h3>
+            <h3 className="text-xl font-display font-bold mb-2">Music & Entertainment</h3>
             <p className="text-muted-foreground">
-              Live DJ, Dhol Performance, Bollywood Dance & Special Celebrity Appearances
+              High-Quality DJ & Music System, Rain Dance Setup, LED Screens & Visual Effects
             </p>
           </div>
           
@@ -46,9 +46,9 @@ const EventInfo = () => {
             <div className="w-16 h-16 rounded-full bg-holi-blue/10 flex items-center justify-center mb-4">
               <Users className="w-8 h-8 text-holi-blue" />
             </div>
-            <h3 className="text-xl font-display font-bold mb-2">Attendees</h3>
+            <h3 className="text-xl font-display font-bold mb-2">VIP Experience</h3>
             <p className="text-muted-foreground">
-              Join thousands of color enthusiasts in Pune's Biggest Holi Party
+              Exclusive VIP Lounge access with premium amenities for VIP ticket holders
             </p>
           </div>
         </div>

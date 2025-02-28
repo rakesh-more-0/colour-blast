@@ -41,11 +41,11 @@ const HeroSection = () => {
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mt-6 opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }}>
               Pune's Biggest <br />
-              <span className="text-gradient">Holi Party 2025</span>
+              <span className="text-gradient">Colour Blast</span>
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 opacity-0 animate-fade-in" style={{ animationDelay: '0.7s' }}>
-              Dehu Alandi Road, Jadhavwadi, Chikhali, Pune
+              Ek Ticket, Hazaar Rang – Aajao Colour Blast Ke Sang!
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center lg:justify-start mt-8 opacity-0 animate-fade-in" style={{ animationDelay: '0.9s' }}>
@@ -68,7 +68,7 @@ const HeroSection = () => {
               />
               <div className="absolute -bottom-5 -right-5 bg-white/80 backdrop-blur-md rounded-xl p-4 border border-white/50 shadow-xl z-20 opacity-0 animate-fade-in" style={{ animationDelay: '1.3s' }}>
                 <div className="text-2xl font-bold text-gradient">
-                  HOLI PARTY 2025
+                  COLOUR BLAST
                 </div>
               </div>
             </div>
