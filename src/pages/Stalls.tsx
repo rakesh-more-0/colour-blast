@@ -23,7 +23,7 @@ const Stalls = () => {
                 </div>
                 <h3 className="text-2xl font-display font-bold mb-4">Liquor Bar</h3>
                 <p className="text-muted-foreground mb-4">
-                  Enjoy premium drinks at our dedicated liquor bar. Valid ID required for entry.
+                  Enjoy premium drinks at our dedicated liquor bar.
                 </p>
                 <ul className="space-y-3 mb-4">
                   <li className="flex items-start">
