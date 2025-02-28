@@ -3,10 +3,50 @@ import React, { useState, useEffect } from 'react';
 import { Check, Star, Ticket, X } from 'lucide-react';
 import { toast } from "@/components/ui/use-toast";
 
+// Color Blast animation component
+const ColorBlast = ({ isActive, x, y, onAnimationEnd }: { isActive: boolean; x: number; y: number; onAnimationEnd: () => void }) => {
+  const colors = [
+    'bg-holi-pink',
+    'bg-holi-purple',
+    'bg-holi-blue',
+    'bg-holi-orange',
+    'bg-holi-yellow',
+    'bg-holi-green',
+  ];
+
+  return isActive ? (
+    <div className="fixed z-50 pointer-events-none" style={{ left: x, top: y }}>
+      {Array.from({ length: 30 }).map((_, i) => {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        const size = Math.random() * 20 + 10;
+        const angle = Math.random() * 360;
+        const distance = Math.random() * 150 + 50;
+        const duration = Math.random() * 0.5 + 0.5;
+        const delay = Math.random() * 0.2;
+        
+        return (
+          <div 
+            key={i}
+            className={`absolute rounded-full ${randomColor} opacity-80`}
+            style={{
+              width: `${size}px`,
+              height: `${size}px`,
+              transform: 'translate(-50%, -50%)',
+              animation: `colorBlast ${duration}s ease-out ${delay}s forwards`
+            }}
+            onAnimationEnd={i === 0 ? onAnimationEnd : undefined}
+          />
+        );
+      })}
+    </div>
+  ) : null;
+};
+
 const TicketSection = () => {
   const [showTicketModal, setShowTicketModal] = useState(false);
   const [selectedTicket, setSelectedTicket] = useState<string | null>(null);
   const [colorPowders, setColorPowders] = useState<Array<{ color: string; x: number; y: number; size: number; delay: number }>>([]);
+  const [colorBlast, setColorBlast] = useState<{ active: boolean, x: number, y: number }>({ active: false, x: 0, y: 0 });
 
   // Generate random color powders for background effect
   useEffect(() => {
@@ -28,6 +68,29 @@ const TicketSection = () => {
     }));
     
     setColorPowders(powders);
+  }, []);
+
+  // Add keyframes for color blast animation
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes colorBlast {
+        0% {
+          transform: translate(-50%, -50%) scale(0.1);
+          opacity: 0.8;
+        }
+        100% {
+          transform: translate(-50%, -50%) translateX(calc(cos(var(--angle)) * var(--distance))) 
+                     translateY(calc(sin(var(--angle)) * var(--distance))) scale(1);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
 
   const tickets = [
@@ -93,9 +156,16 @@ const TicketSection = () => {
     }
   ];
 
-  const handleTicketClick = (ticketId: string) => {
+  const handleTicketClick = (ticketId: string, event: React.MouseEvent) => {
     setSelectedTicket(ticketId);
     setShowTicketModal(true);
+    
+    // Trigger color blast animation at click position
+    setColorBlast({
+      active: true,
+      x: event.clientX,
+      y: event.clientY
+    });
     
     // Show a toast notification
     toast({
@@ -103,6 +173,10 @@ const TicketSection = () => {
       description: `You've selected the ${tickets.find(t => t.id === ticketId)?.name}`,
       variant: "default",
     });
+  };
+
+  const handleColorBlastEnd = () => {
+    setColorBlast({ ...colorBlast, active: false });
   };
 
   return (
@@ -124,6 +198,14 @@ const TicketSection = () => {
       
       {/* Semi-transparent overlay for better text readability */}
       <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+      
+      {/* Color blast animation */}
+      <ColorBlast 
+        isActive={colorBlast.active} 
+        x={colorBlast.x} 
+        y={colorBlast.y} 
+        onAnimationEnd={handleColorBlastEnd} 
+      />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
@@ -182,7 +264,7 @@ const TicketSection = () => {
                   </ul>
                   
                   <button 
-                    onClick={() => handleTicketClick(ticket.id)}
+                    onClick={(e) => handleTicketClick(ticket.id, e)}
                     className={`w-full block text-center py-3 px-4 rounded-xl font-medium hover:shadow-lg transition-all text-sm relative overflow-hidden group`}
                     style={{
                       background: 'linear-gradient(45deg, var(--tw-gradient-from), var(--tw-gradient-to))',
@@ -265,6 +347,18 @@ const TicketSection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-holi-gradient text-white py-3 px-4 rounded-xl font-medium text-center hover:shadow-lg hover:shadow-purple-200 transition-all transform hover:-translate-y-1"
+                  onClick={(e) => {
+                    // Prevent modal from closing
+                    e.stopPropagation();
+                    
+                    // Trigger color blast at button position
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    setColorBlast({
+                      active: true,
+                      x: rect.left + rect.width / 2,
+                      y: rect.top + rect.height / 2
+                    });
+                  }}
                 >
                   BookMyShow
                 </a>
@@ -274,6 +368,18 @@ const TicketSection = () => {
                   target="_blank"
                   rel="noopener noreferrer" 
                   className="w-full bg-white border-2 border-holi-purple text-holi-purple py-3 px-4 rounded-xl font-medium text-center hover:bg-holi-purple hover:text-white transition-colors transform hover:-translate-y-1"
+                  onClick={(e) => {
+                    // Prevent modal from closing
+                    e.stopPropagation();
+                    
+                    // Trigger color blast at button position
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    setColorBlast({
+                      active: true,
+                      x: rect.left + rect.width / 2,
+                      y: rect.top + rect.height / 2
+                    });
+                  }}
                 >
                   WhatsApp Booking
                 </a>
