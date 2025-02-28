@@ -1,11 +1,12 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Copy, Check } from 'lucide-react';
 
 const CTASection = () => {
   const [copied, setCopied] = useState(false);
   const [animateWhatsApp, setAnimateWhatsApp] = useState(false);
+  const navigate = useNavigate();
   
   const handleCopyNumber = () => {
     navigator.clipboard.writeText('9607820101');
@@ -16,6 +17,21 @@ const CTASection = () => {
   const handleWhatsAppClick = () => {
     setAnimateWhatsApp(true);
     setTimeout(() => setAnimateWhatsApp(false), 1000);
+  };
+
+  const handleNavigate = (path: string) => {
+    if (path.startsWith('/#')) {
+      navigate('/');
+      setTimeout(() => {
+        const id = path.substring(2);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      navigate(path);
+    }
   };
 
   return (
@@ -37,13 +53,13 @@ const CTASection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link 
-              to="/tickets" 
-              className="holi-btn-gradient px-8 py-4 text-lg relative overflow-hidden group"
+            <div 
+              onClick={() => handleNavigate('/#tickets')} 
+              className="holi-btn-gradient px-8 py-4 text-lg relative overflow-hidden group cursor-pointer"
             >
               <span className="relative z-10">Book Your Tickets Now!</span>
               <span className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 opacity-20"></span>
-            </Link>
+            </div>
             <a 
               href="https://wa.me/919607820101" 
               target="_blank" 
