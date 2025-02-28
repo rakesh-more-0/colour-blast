@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Music, Utensils, PaintBucket, Sparkles, Camera } from 'lucide-react';
+import { Music, Utensils, PaintBucket, Sparkles, Camera, Shield } from 'lucide-react';
 
 const FeaturesSection = () => {
   const features = [
@@ -11,23 +11,28 @@ const FeaturesSection = () => {
     },
     {
       icon: <Music className="w-10 h-10 text-holi-purple" />,
-      title: "Live DJ Performance",
-      description: "Dance to the beats of top DJs playing latest Bollywood hits"
+      title: "Music & Entertainment",
+      description: "High-Quality DJ Setup, Live Dhol Performance & LED Screen Visuals"
     },
     {
       icon: <Utensils className="w-10 h-10 text-holi-orange" />,
-      title: "Food & Beverages",
-      description: "Enjoy a wide variety of culinary delights and refreshing drinks"
+      title: "Food & Drinks",
+      description: "Thandai, special Holi drinks, food stalls and live counters"
     },
     {
       icon: <Sparkles className="w-10 h-10 text-holi-yellow" />,
       title: "Rain Dance",
-      description: "Cool off under refreshing water sprinklers while dancing to music"
+      description: "Cool off in our dedicated rain dance area with water balloons & pichkari zone"
     },
     {
       icon: <Camera className="w-10 h-10 text-holi-blue" />,
       title: "Photo Booths",
-      description: "Capture colorful memories at our specially designed photo zones"
+      description: "Capture colorful memories at our specially designed selfie & photo zones"
+    },
+    {
+      icon: <Shield className="w-10 h-10 text-holi-green" />,
+      title: "Safety & Management",
+      description: "Security, first aid, separate family & VIP zones, and lost & found desk"
     }
   ];
 

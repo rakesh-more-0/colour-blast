@@ -36,7 +36,7 @@ const Navbar = () => {
               <div className="w-12 h-12 bg-holi-gradient rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-xl">H</span>
               </div>
-              <span className="ml-3 text-xl font-display font-bold">Holi<span className="text-holi-purple">Fest</span></span>
+              <span className="ml-3 text-xl font-display font-bold">Holi<span className="text-holi-purple">Party</span></span>
             </Link>
           </div>
 
@@ -58,8 +58,8 @@ const Navbar = () => {
             <Link to="/lineup" className="holi-btn-secondary">
               Line Up
             </Link>
-            <Link to="/contact" className="holi-btn-gradient">
-              Get in touch
+            <Link to="/tickets" className="holi-btn-gradient">
+              Book Tickets
             </Link>
           </div>
 
@@ -93,8 +93,8 @@ const Navbar = () => {
               <Link to="/lineup" className="holi-btn-secondary text-center py-2">
                 Line Up
               </Link>
-              <Link to="/contact" className="holi-btn-gradient text-center py-2">
-                Get in touch
+              <Link to="/tickets" className="holi-btn-gradient text-center py-2">
+                Book Tickets
               </Link>
             </div>
           </nav>

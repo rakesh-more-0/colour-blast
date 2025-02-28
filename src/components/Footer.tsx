@@ -14,7 +14,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-holi-gradient rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-lg">H</span>
               </div>
-              <span className="ml-3 text-xl font-display font-bold">Holi<span className="text-holi-purple">Fest</span></span>
+              <span className="ml-3 text-xl font-display font-bold">Holi<span className="text-holi-purple">Party</span></span>
             </div>
             <p className="text-muted-foreground mb-6">
               Pune's biggest and most vibrant Holi celebration, bringing together people for a day of colors, music, dance, and joy.
@@ -50,15 +50,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin size={18} className="mt-1 mr-3 text-holi-purple" />
-                <span className="text-muted-foreground">Mahalaxhmi Lawns, Kharadi & Meadows, The Orchid Hotel, Balewadi</span>
+                <span className="text-muted-foreground">Dehu Alandi Road, Jadhavwadi, Chikhali, Pune</span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-3 text-holi-purple" />
-                <span className="text-muted-foreground">+91 98765 43210</span>
+                <span className="text-muted-foreground">Contact Number</span>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-3 text-holi-purple" />
-                <span className="text-muted-foreground">info@puneholifest.com</span>
+                <span className="text-muted-foreground">holiparty@example.com</span>
               </li>
             </ul>
           </div>
@@ -86,7 +86,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-muted mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-muted-foreground text-sm">© 2025 Pune HoliFest. All rights reserved.</p>
+          <p className="text-muted-foreground text-sm">© 2025 Holi Party. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/terms" className="text-sm text-muted-foreground hover:text-foreground">Terms of Service</Link>
             <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground">Privacy Policy</Link>

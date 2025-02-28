@@ -16,7 +16,7 @@ const EventInfo = () => {
             </div>
             <h3 className="text-xl font-display font-bold mb-2">Date & Time</h3>
             <p className="text-lg font-medium">14th March 2025</p>
-            <p className="text-muted-foreground">10:30 AM Onwards</p>
+            <p className="text-muted-foreground">10:00 AM Onwards</p>
           </div>
           
           {/* Location */}
@@ -26,7 +26,7 @@ const EventInfo = () => {
             </div>
             <h3 className="text-xl font-display font-bold mb-2">Venue</h3>
             <p className="text-muted-foreground">
-              Mahalaxhmi Lawns, Kharadi & Meadows, The Orchid Hotel, Balewadi
+              Dehu Alandi Road, Jadhavwadi, Chikhali, Pune
             </p>
           </div>
           
@@ -37,7 +37,7 @@ const EventInfo = () => {
             </div>
             <h3 className="text-xl font-display font-bold mb-2">Performances</h3>
             <p className="text-muted-foreground">
-              Live DJ, Folk Dances, Traditional Drumming & Special Guest Artists
+              Live DJ, Dhol Performance, Bollywood Dance & Special Celebrity Appearances
             </p>
           </div>
           
@@ -48,7 +48,7 @@ const EventInfo = () => {
             </div>
             <h3 className="text-xl font-display font-bold mb-2">Attendees</h3>
             <p className="text-muted-foreground">
-              Join thousands of color enthusiasts in Pune's Biggest Holi Festival
+              Join thousands of color enthusiasts in Pune's Biggest Holi Party
             </p>
           </div>
         </div>
