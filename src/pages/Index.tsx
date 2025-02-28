@@ -5,7 +5,6 @@ import HeroSection from '../components/HeroSection';
 import EventInfo from '../components/EventInfo';
 import FeaturesSection from '../components/FeaturesSection';
 import TicketSection from '../components/TicketSection';
-import GallerySection from '../components/GallerySection';
 import CTASection from '../components/CTASection';
 import Footer from '../components/Footer';
 
@@ -33,10 +32,13 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <HeroSection />
-        <EventInfo />
+        <div id="venue">
+          <EventInfo />
+        </div>
         <FeaturesSection />
-        <TicketSection />
-        <GallerySection />
+        <div id="tickets">
+          <TicketSection />
+        </div>
         <CTASection />
       </main>
       <Footer />

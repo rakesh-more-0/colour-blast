@@ -20,10 +20,9 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Venue", path: "/venue" },
+    { name: "Venue", path: "/#venue" },
     { name: "Stalls", path: "/stalls" },
     { name: "About Event", path: "/about" },
-    { name: "Gallery", path: "/gallery" },
   ];
 
   return (
@@ -63,7 +62,7 @@ const Navbar = () => {
             >
               Follow Us
             </a>
-            <Link to="/tickets" className="holi-btn-gradient">
+            <Link to="/#tickets" className="holi-btn-gradient">
               Book Tickets
             </Link>
           </div>
@@ -105,7 +104,7 @@ const Navbar = () => {
                 Follow Us
               </a>
               <Link 
-                to="/tickets" 
+                to="/#tickets" 
                 className="holi-btn-gradient text-center py-2"
                 onClick={() => setIsOpen(false)}
               >

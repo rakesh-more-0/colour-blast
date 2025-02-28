@@ -1,9 +1,31 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Phone, Mail, MapPin } from 'lucide-react';
+import { Instagram, Phone, Mail, MapPin, Copy, Check } from 'lucide-react';
 
 const Footer = () => {
+  const [copiedPhone, setCopiedPhone] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedAddress, setCopiedAddress] = useState(false);
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText('9607820101');
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2000);
+  };
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('richpointdigital@gmail.com');
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const handleCopyAddress = () => {
+    navigator.clipboard.writeText('Balaji Ramji Alhat Ground, Shreeram Chowk, Near River Residency, Jadhavwadi, Chikhali 411062');
+    setCopiedAddress(true);
+    setTimeout(() => setCopiedAddress(false), 2000);
+  };
+
   return (
     <footer className="bg-white border-t border-muted pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -31,9 +53,8 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-6">Quick Links</h3>
             <ul className="space-y-3">
               <li><Link to="/about" className="text-muted-foreground hover:text-holi-purple transition-colors">About Event</Link></li>
-              <li><Link to="/tickets" className="text-muted-foreground hover:text-holi-purple transition-colors">Tickets</Link></li>
+              <li><Link to="/#tickets" className="text-muted-foreground hover:text-holi-purple transition-colors">Tickets</Link></li>
               <li><Link to="/venue" className="text-muted-foreground hover:text-holi-purple transition-colors">Venue</Link></li>
-              <li><Link to="/gallery" className="text-muted-foreground hover:text-holi-purple transition-colors">Gallery</Link></li>
               <li><Link to="/faq" className="text-muted-foreground hover:text-holi-purple transition-colors">FAQs</Link></li>
             </ul>
           </div>
@@ -42,17 +63,59 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-6">Contact Us</h3>
             <ul className="space-y-4">
-              <li className="flex items-start">
-                <MapPin size={18} className="mt-1 mr-3 text-holi-purple" />
-                <span className="text-muted-foreground">Balaji Ramji Alhat Ground, Shreeram Chowk, Near River Residency, Jadhavwadi, Chikhali 411062</span>
+              <li className="flex items-start group relative">
+                <MapPin size={18} className="mt-1 mr-3 text-holi-purple flex-shrink-0" />
+                <div className="flex-grow flex items-start justify-between">
+                  <span className="text-muted-foreground pr-2">Balaji Ramji Alhat Ground, Shreeram Chowk, Near River Residency, Jadhavwadi, Chikhali 411062</span>
+                  <button 
+                    onClick={handleCopyAddress}
+                    className="p-1 rounded-full opacity-0 group-hover:opacity-100 focus:opacity-100 hover:bg-muted/50 transition"
+                    aria-label="Copy address"
+                  >
+                    {copiedAddress ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
+                  </button>
+                </div>
+                {copiedAddress && (
+                  <span className="absolute -top-8 right-0 bg-black text-white text-xs px-2 py-1 rounded">
+                    Copied!
+                  </span>
+                )}
               </li>
-              <li className="flex items-center">
+              <li className="flex items-center group relative">
                 <Phone size={18} className="mr-3 text-holi-purple" />
-                <span className="text-muted-foreground">+91 9607820101</span>
+                <div className="flex items-center justify-between w-full">
+                  <a href="tel:+919607820101" className="text-muted-foreground hover:text-holi-purple transition-colors">+91 9607820101</a>
+                  <button 
+                    onClick={handleCopyPhone}
+                    className="p-1 rounded-full opacity-0 group-hover:opacity-100 focus:opacity-100 hover:bg-muted/50 transition"
+                    aria-label="Copy phone number"
+                  >
+                    {copiedPhone ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
+                  </button>
+                </div>
+                {copiedPhone && (
+                  <span className="absolute -top-8 right-0 bg-black text-white text-xs px-2 py-1 rounded">
+                    Copied!
+                  </span>
+                )}
               </li>
-              <li className="flex items-center">
+              <li className="flex items-center group relative">
                 <Mail size={18} className="mr-3 text-holi-purple" />
-                <span className="text-muted-foreground">richpointdigital@gmail.com</span>
+                <div className="flex items-center justify-between w-full">
+                  <a href="mailto:richpointdigital@gmail.com" className="text-muted-foreground hover:text-holi-purple transition-colors">richpointdigital@gmail.com</a>
+                  <button 
+                    onClick={handleCopyEmail}
+                    className="p-1 rounded-full opacity-0 group-hover:opacity-100 focus:opacity-100 hover:bg-muted/50 transition"
+                    aria-label="Copy email"
+                  >
+                    {copiedEmail ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
+                  </button>
+                </div>
+                {copiedEmail && (
+                  <span className="absolute -top-8 right-0 bg-black text-white text-xs px-2 py-1 rounded">
+                    Copied!
+                  </span>
+                )}
               </li>
             </ul>
           </div>
