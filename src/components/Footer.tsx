@@ -122,7 +122,10 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-muted mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-muted-foreground text-sm">© 2025 Colour Blast. All rights reserved.</p>
+          <div className="flex flex-col items-center md:items-start">
+            <p className="text-muted-foreground text-sm mb-1">© 2025 Colour Blast. All rights reserved.</p>
+            <p className="text-muted-foreground text-sm">Created by <a href="https://richpointdigital.com" target="_blank" rel="noopener noreferrer" className="font-medium text-holi-purple hover:underline">RichPoint Digital</a></p>
+          </div>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/terms" className="text-sm text-muted-foreground hover:text-foreground">Terms of Service</Link>
             <Link to="/privacy" className="text-sm text-muted-foreground hover:text-foreground">Privacy Policy</Link>
