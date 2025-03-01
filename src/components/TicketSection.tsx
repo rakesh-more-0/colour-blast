@@ -331,7 +331,7 @@ const TicketSection = () => {
               
               <div className="grid grid-cols-1 gap-4">
                 <a 
-                  href="https://bookmyshow.com" 
+                  href="https://mepass.in/events/color-blast" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-holi-gradient text-white py-3 px-4 rounded-xl font-medium text-center hover:shadow-lg hover:shadow-purple-200 transition-all transform hover:-translate-y-1"
@@ -346,7 +346,7 @@ const TicketSection = () => {
                     });
                   }}
                 >
-                  BookMyShow
+                  Mepass
                 </a>
                 
                 <a 
