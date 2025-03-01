@@ -37,6 +37,9 @@ const HeroSection = () => {
           <div className="text-center lg:text-left space-y-6">
             <div className="space-y-4 opacity-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <ColorfulBanner date="14TH MARCH" time="10:00 AM ONWARDS" />
+              <p className="text-muted-foreground font-medium opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+                <span className="text-holi-purple">Organised by Varad Events</span> • <span className="text-holi-orange">Managed by RichPoint Digital</span>
+              </p>
             </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mt-6 opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }}>
