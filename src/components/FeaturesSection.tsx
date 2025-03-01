@@ -1,11 +1,17 @@
-
 import React, { useState, useRef } from 'react';
 import { Music, Utensils, PaintBucket, Sparkles, Camera, Shield, X, Droplets, Umbrella } from 'lucide-react';
 import { useMouseGlow } from '../hooks/useMouseGlow';
 
+interface FeatureItem {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  details: React.ReactNode;
+}
+
 const FeaturesSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState<{title: string, description: string, icon: React.ReactNode}>({
+  const [modalContent, setModalContent] = useState<{title: string, description: React.ReactNode, icon: React.ReactNode}>({
     title: "", 
     description: "", 
     icon: null
@@ -22,7 +28,7 @@ const FeaturesSection = () => {
     maxDistance: 350
   });
 
-  const features = [
+  const features: FeatureItem[] = [
     {
       icon: <PaintBucket className="w-10 h-10 text-holi-pink" />,
       title: "Organic Colors",
@@ -91,7 +97,7 @@ const FeaturesSection = () => {
     }
   ];
 
-  const openModal = (feature: typeof features[0]) => {
+  const openModal = (feature: FeatureItem) => {
     setModalContent({
       title: feature.title,
       description: feature.details,
