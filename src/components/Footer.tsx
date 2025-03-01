@@ -33,8 +33,12 @@ const Footer = () => {
           {/* About */}
           <div>
             <div className="flex items-center mb-6">
-              <div className="w-10 h-10 bg-holi-gradient rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">C</span>
+              <div className="rounded-full overflow-hidden border-2 border-holi-purple/30 shadow-lg h-10 w-10">
+                <img 
+                  src="/lovable-uploads/6f31c3ec-1d10-47f5-91d6-e7f8967bc385.png" 
+                  alt="Colour Blast Logo" 
+                  className="h-full w-full object-cover"
+                />
               </div>
               <span className="ml-3 text-xl font-display font-bold">Colour<span className="text-holi-purple">Blast</span></span>
             </div>
