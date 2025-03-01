@@ -62,7 +62,7 @@ const HeroSection = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-holi-gradient opacity-25 blur-2xl rounded-full animate-spin-slow"></div>
               <img 
-                src="/lovable-uploads/b698a4b3-1427-4022-a66c-35b7ca1e804d.png" 
+                src="/lovable-uploads/photo-1605810230434-7631ac76ec81.jpg" 
                 alt="Holi Festival Celebration" 
                 className="relative rounded-2xl shadow-2xl z-10 w-full h-auto"
               />
