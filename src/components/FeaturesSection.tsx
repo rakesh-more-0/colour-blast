@@ -1,5 +1,6 @@
+
 import React, { useState, useRef } from 'react';
-import { Music, Utensils, PaintBucket, Sparkles, Camera, Shield, X, Droplets, Umbrella } from 'lucide-react';
+import { Music, Utensils, PaintBucket, Droplets, Camera, Shield, X, Umbrella } from 'lucide-react';
 import { useMouseGlow } from '../hooks/useMouseGlow';
 
 interface FeatureItem {
@@ -48,17 +49,17 @@ const FeaturesSection = () => {
       details: "Multiple food stalls featuring a variety of cuisines including street food favorites, chaat, sandwiches, and traditional Holi specialties like gujiya and thandai. The dedicated liquor bar (with ID verification) will serve beer, cocktails, and other alcoholic beverages."
     },
     {
-      icon: <Sparkles className="w-10 h-10 text-holi-yellow" />,
-      title: "Color Blast Countdown",
-      description: "Join the exciting color blast countdown - a spectacular highlight of the event",
+      icon: <Droplets className="w-10 h-10 text-holi-blue" />,
+      title: "Rain Dance",
+      description: "The Ultimate Holi Experience with DJ SWAP INDIA",
       details: (
         <div className="space-y-6">
-          <p>The Color Blast Countdown is our signature event happening at 12 noon. Everyone gathers in the central area as our MC leads a countdown, followed by thousands of attendees throwing colors in the air simultaneously, creating a breathtaking spectacle of colors against the sky.</p>
+          <p>Get ready to dance your heart out under the showers of joy! Our massive Rain Dance setup will keep the energy high as you groove to electrifying beats by DJ SWAP INDIA.</p>
           
           <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200">
             <div className="flex items-center gap-3 mb-3">
-              <Droplets className="w-6 h-6 text-blue-500" />
-              <h4 className="font-bold text-blue-700">Rain Dance – The Ultimate Holi Experience!</h4>
+              <Umbrella className="w-6 h-6 text-blue-500" />
+              <h4 className="font-bold text-blue-700">Rain Dance – The Ultimate Holi Experience! 🎶💃</h4>
             </div>
             
             <p className="mb-4">Get ready to dance your heart out under the showers of joy! Our massive Rain Dance setup will keep the energy high as you groove to electrifying beats by DJ SWAP INDIA.</p>
