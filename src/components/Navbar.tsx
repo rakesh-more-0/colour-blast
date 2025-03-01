@@ -55,14 +55,16 @@ const Navbar = () => {
     <header className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md shadow-md' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo - Updated with the new image */}
+          {/* Logo - Updated with the circular image */}
           <div className="flex-shrink-0 flex items-center">
             <div onClick={() => navigate('/')} className="flex items-center cursor-pointer">
-              <img 
-                src="/lovable-uploads/6f31c3ec-1d10-47f5-91d6-e7f8967bc385.png" 
-                alt="Colour Blast Logo" 
-                className="h-12 md:h-16 w-auto"
-              />
+              <div className="rounded-full overflow-hidden border-2 border-holi-purple/30 shadow-lg h-12 md:h-16 w-12 md:w-16">
+                <img 
+                  src="/lovable-uploads/6f31c3ec-1d10-47f5-91d6-e7f8967bc385.png" 
+                  alt="Colour Blast Logo" 
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
           </div>
 
