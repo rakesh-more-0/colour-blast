@@ -18,6 +18,22 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Add a new effect to handle body scroll locking when venue info is shown
+  useEffect(() => {
+    if (showVenueInfo) {
+      // Lock scroll when venue info is shown
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Restore scroll when venue info is hidden
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      // Cleanup on unmount
+      document.body.style.overflow = '';
+    };
+  }, [showVenueInfo]);
+
   const toggleMenu = () => setIsOpen(!isOpen);
   
   const handleNavClick = (path: string) => {
@@ -157,17 +173,24 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Venue Info Popup - Enhanced with smoother transitions */}
+      {/* Venue Info Popup - Enhanced with fixed positioning and smoother transitions */}
       {showVenueInfo && (
         <div 
-          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 animate-fade-in"
+          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 animate-fade-in overflow-auto"
           onClick={() => setShowVenueInfo(false)}
-          style={{ animationDuration: '0.4s' }}
+          style={{ 
+            animationDuration: '0.4s',
+          }}
         >
           <div 
-            className="bg-white rounded-2xl overflow-hidden max-w-md w-full shadow-2xl animate-scale-in"
+            className="bg-white rounded-2xl overflow-hidden max-w-md w-full shadow-2xl animate-scale-in my-4"
             onClick={(e) => e.stopPropagation()}
-            style={{ animationDuration: '0.4s', animationDelay: '0.1s' }}
+            style={{ 
+              animationDuration: '0.4s', 
+              animationDelay: '0.1s',
+              position: 'relative',
+              transform: 'translate(0, 0)' // Reset any transform that might affect positioning
+            }}
           >
             <div className="p-4 border-b flex justify-between items-center bg-gradient-to-r from-holi-blue/10 to-holi-purple/10">
               <h3 className="font-bold text-lg text-holi-purple">Event Venue</h3>
