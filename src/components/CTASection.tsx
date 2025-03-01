@@ -61,7 +61,7 @@ const CTASection = () => {
               <span className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 opacity-20"></span>
             </div>
             <a 
-              href="https://api.whatsapp.com/send/?phone=%2B919607820101&text=I+want+to+Book+Tickets" 
+              href="https://api.whatsapp.com/send/?phone=%2B919607820101&text=Hello+Colour+Blast,+I+want+to+inquire+about+tickets!" 
               target="_blank" 
               rel="noopener noreferrer" 
               className={`holi-btn-secondary px-8 py-4 text-lg transition-transform ${animateWhatsApp ? 'scale-95' : ''}`}

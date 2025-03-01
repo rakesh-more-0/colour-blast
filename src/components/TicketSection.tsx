@@ -280,7 +280,7 @@ const TicketSection = () => {
         
         <p className="text-center text-muted-foreground mt-10 relative">
           <span className="relative z-10">
-            Early bird discounts available for a limited time. <a href="https://api.whatsapp.com/send/?phone=%2B919607820101&text=I+want+to+Book+Tickets" target="_blank" rel="noopener noreferrer" className="text-holi-purple font-medium hover:text-holi-pink transition-colors">Book directly via WhatsApp</a> 9607820101
+            Early bird discounts available for a limited time. <a href="https://api.whatsapp.com/send/?phone=%2B919607820101&text=Hello+Colour+Blast,+I+want+to+inquire+about+tickets!" target="_blank" rel="noopener noreferrer" className="text-holi-purple font-medium hover:text-holi-pink transition-colors">Book directly via WhatsApp</a> 9607820101
           </span>
         </p>
       </div>
@@ -350,7 +350,7 @@ const TicketSection = () => {
                 </a>
                 
                 <a 
-                  href="https://api.whatsapp.com/send/?phone=%2B919607820101&text=I+want+to+Book+Tickets"
+                  href="https://api.whatsapp.com/send/?phone=%2B919607820101&text=Hello+Colour+Blast,+I+want+to+inquire+about+tickets!"
                   target="_blank"
                   rel="noopener noreferrer" 
                   className="w-full bg-white border-2 border-holi-purple text-holi-purple py-3 px-4 rounded-xl font-medium text-center hover:bg-holi-purple hover:text-white transition-colors transform hover:-translate-y-1"
