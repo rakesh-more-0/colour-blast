@@ -67,11 +67,7 @@ const HeroSection = () => {
                 alt="Holi Festival Celebration" 
                 className="relative rounded-2xl shadow-2xl z-10 w-full h-auto"
               />
-              <div className="absolute -bottom-5 -right-5 bg-white/80 backdrop-blur-md rounded-xl p-4 border border-white/50 shadow-xl z-20 opacity-0 animate-fade-in" style={{ animationDelay: '1.3s' }}>
-                <div className="text-2xl font-bold text-gradient">
-                  COLOUR BLAST
-                </div>
-              </div>
+              {/* Removed the COLOUR BLAST footer that was here */}
             </div>
           </div>
         </div>
