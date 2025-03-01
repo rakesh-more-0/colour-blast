@@ -53,33 +53,29 @@ const FeaturesSection = () => {
       title: "Rain Dance",
       description: "The Ultimate Holi Experience with DJ SWAP INDIA",
       details: (
-        <div className="space-y-6">
-          <p>Get ready to dance your heart out under the showers of joy! Our massive Rain Dance setup will keep the energy high as you groove to electrifying beats by DJ SWAP INDIA.</p>
+        <div className="space-y-4">
+          <p>Dance under refreshing water showers to electrifying beats by DJ SWAP INDIA.</p>
           
-          <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200">
-            <div className="flex items-center gap-3 mb-3">
-              <Umbrella className="w-6 h-6 text-blue-500" />
-              <h4 className="font-bold text-blue-700">Rain Dance – The Ultimate Holi Experience! 🎶💃</h4>
+          <div className="p-3 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+            <div className="flex items-center gap-2 mb-2">
+              <Umbrella className="w-5 h-5 text-blue-500" />
+              <h4 className="font-bold text-blue-700">Rain Dance 🎶💃</h4>
             </div>
             
-            <p className="mb-4">Get ready to dance your heart out under the showers of joy! Our massive Rain Dance setup will keep the energy high as you groove to electrifying beats by DJ SWAP INDIA.</p>
-            
-            <ul className="space-y-2 mb-4">
+            <ul className="space-y-1 text-sm">
               <li className="flex items-start gap-2">
                 <span className="text-blue-500 flex-shrink-0">💃</span>
-                <span>Dance in the rain to your favorite Holi anthems!</span>
+                <span>Dance to your favorite Holi anthems!</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-blue-500 flex-shrink-0">🎶</span>
-                <span>Non-stop music, vibrant colors, and unlimited fun!</span>
+                <span>Non-stop music and vibrant colors!</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-blue-500 flex-shrink-0">🚿</span>
-                <span>Refreshing water showers to keep the Holi vibe alive!</span>
+                <span>Refreshing water showers!</span>
               </li>
             </ul>
-            
-            <p className="italic text-blue-700">Step into the splash zone and let the rain amplify your Holi celebration! 🌈💦🔥</p>
           </div>
         </div>
       )
