@@ -58,7 +58,8 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className="hidden lg:block relative opacity-0 animate-fade-in" style={{ animationDelay: '1s' }}>
+          {/* Image section - now visible on mobile */}
+          <div className="block relative opacity-0 animate-fade-in mb-8 lg:mb-0" style={{ animationDelay: '1s' }}>
             <div className="relative">
               <div className="absolute -inset-4 bg-holi-gradient opacity-25 blur-2xl rounded-full animate-spin-slow"></div>
               <img 
