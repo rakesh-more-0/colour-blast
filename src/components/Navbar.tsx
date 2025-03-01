@@ -18,18 +18,15 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Add a new effect to handle body scroll locking when venue info is shown
+  // Body scroll lock effect
   useEffect(() => {
     if (showVenueInfo) {
-      // Lock scroll when venue info is shown
       document.body.style.overflow = 'hidden';
     } else {
-      // Restore scroll when venue info is hidden
       document.body.style.overflow = '';
     }
 
     return () => {
-      // Cleanup on unmount
       document.body.style.overflow = '';
     };
   }, [showVenueInfo]);
@@ -173,26 +170,24 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Venue Info Popup - Enhanced with fixed positioning and smoother transitions */}
+      {/* Venue Info Popup - Fixed to ensure map and address display properly */}
       {showVenueInfo && (
         <div 
-          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 animate-fade-in overflow-auto"
+          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 animate-fade-in"
           onClick={() => setShowVenueInfo(false)}
           style={{ 
-            animationDuration: '0.4s',
+            animationDuration: '0.3s',
           }}
         >
           <div 
-            className="bg-white rounded-2xl overflow-hidden max-w-md w-full shadow-2xl animate-scale-in my-4"
+            className="bg-white rounded-2xl max-w-md w-full shadow-2xl animate-scale-in max-h-[90vh] overflow-auto"
             onClick={(e) => e.stopPropagation()}
             style={{ 
-              animationDuration: '0.4s', 
-              animationDelay: '0.1s',
-              position: 'relative',
-              transform: 'translate(0, 0)' // Reset any transform that might affect positioning
+              animationDuration: '0.3s', 
+              animationDelay: '0.05s',
             }}
           >
-            <div className="p-4 border-b flex justify-between items-center bg-gradient-to-r from-holi-blue/10 to-holi-purple/10">
+            <div className="p-4 border-b flex justify-between items-center bg-gradient-to-r from-holi-blue/10 to-holi-purple/10 sticky top-0 z-10">
               <h3 className="font-bold text-lg text-holi-purple">Event Venue</h3>
               <button 
                 onClick={() => setShowVenueInfo(false)}
@@ -202,24 +197,26 @@ const Navbar = () => {
               </button>
             </div>
             <div className="p-6">
-              <div className="flex items-start mb-4 opacity-0 animate-slide-in-up" style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}>
+              <div className="flex items-start mb-4">
                 <MapPin className="text-holi-purple mr-2 mt-1 flex-shrink-0" size={20} />
                 <p className="font-medium">Balaji Ramji Alhat Ground, Shreeram Chowk, Near River Residency, Jadhavwadi, Chikhali 411062</p>
               </div>
               
-              <div className="aspect-video w-full mb-4 rounded-lg overflow-hidden shadow-md opacity-0 animate-slide-in-up" style={{ animationDelay: '0.3s', animationFillMode: 'forwards' }}>
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.3990541546357!2d73.8224977763633!3d18.66183868225945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3c3c3c3c3c3%3A0x3c3c3c3c3c3c3c3c!2sBalaji%20Ramji%20Alhat%20Ground!5e0!3m2!1sen!2sin!4v1620731726373!5m2!1sen!2sin" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen={true} 
-                  loading="lazy"
-                  title="Event Location Map"
-                ></iframe>
+              <div className="w-full mb-4 rounded-lg overflow-hidden shadow-md">
+                <div className="aspect-video w-full">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.3990541546357!2d73.8224977763633!3d18.66183868225945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3c3c3c3c3c3%3A0x3c3c3c3c3c3c3c3c!2sBalaji%20Ramji%20Alhat%20Ground!5e0!3m2!1sen!2sin!4v1620731726373!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0 }} 
+                    allowFullScreen={true} 
+                    loading="lazy"
+                    title="Event Location Map"
+                  ></iframe>
+                </div>
               </div>
               
-              <div className="flex space-x-4 opacity-0 animate-slide-in-up" style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}>
+              <div className="flex space-x-4">
                 <button 
                   onClick={() => {
                     setShowVenueInfo(false);
