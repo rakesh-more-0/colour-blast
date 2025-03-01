@@ -367,6 +367,25 @@ const TicketSection = () => {
                 >
                   WhatsApp Booking
                 </a>
+                
+                <a 
+                  href="https://in.bookmyshow.com/explore/events-pune"
+                  target="_blank"
+                  rel="noopener noreferrer" 
+                  className="w-full bg-white border-2 border-red-500 text-red-500 py-3 px-4 rounded-xl font-medium text-center hover:bg-red-500 hover:text-white transition-colors transform hover:-translate-y-1"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    setColorBlast({
+                      active: true,
+                      x: rect.left + rect.width / 2,
+                      y: rect.top + rect.height /2
+                    });
+                  }}
+                >
+                  BookMyShow
+                </a>
               </div>
             </div>
           </div>
