@@ -9,7 +9,7 @@ import CTASection from '../components/CTASection';
 import Footer from '../components/Footer';
 import { useMouseGlow } from '../hooks/useMouseGlow';
 
-// Enhanced Color Blast animation component with smoother transitions
+// Color Blast animation component
 const ColorBlast = ({ isActive, x, y, onAnimationEnd }: { isActive: boolean; x: number; y: number; onAnimationEnd: () => void }) => {
   const colors = [
     'bg-holi-pink',
@@ -27,7 +27,7 @@ const ColorBlast = ({ isActive, x, y, onAnimationEnd }: { isActive: boolean; x: 
         const size = Math.random() * 20 + 10;
         const angle = Math.random() * 360;
         const distance = Math.random() * 150 + 50;
-        const duration = Math.random() * 0.5 + 0.7; // Slightly longer for smoother effect
+        const duration = Math.random() * 0.5 + 0.5;
         const delay = Math.random() * 0.2;
         
         return (
@@ -38,7 +38,7 @@ const ColorBlast = ({ isActive, x, y, onAnimationEnd }: { isActive: boolean; x: 
               width: `${size}px`,
               height: `${size}px`,
               transform: 'translate(-50%, -50%)',
-              animation: `colorBlast ${duration}s cubic-bezier(0.25, 0.1, 0.25, 1) ${delay}s forwards`,
+              animation: `colorBlast ${duration}s ease-out ${delay}s forwards`,
               '--angle': `${angle}deg`,
               '--distance': `${distance}px`
             } as React.CSSProperties}
@@ -53,7 +53,6 @@ const ColorBlast = ({ isActive, x, y, onAnimationEnd }: { isActive: boolean; x: 
 const Index = () => {
   const mainRef = useRef<HTMLDivElement>(null);
   const [colorBlast, setColorBlast] = useState<{ active: boolean, x: number, y: number }>({ active: false, x: 0, y: 0 });
-  const [scrollProgress, setScrollProgress] = useState(0);
   
   const { containerRef } = useMouseGlow<HTMLDivElement>({
     colors: [
@@ -61,11 +60,11 @@ const Index = () => {
       'rgba(255, 119, 71, 0.5)', // Orange
       'rgba(0, 212, 245, 0.5)'   // Blue
     ],
-    selector: '.glass-card, .rounded-2xl, .hover\\:shadow-xl, .holi-btn-gradient, .holi-btn-secondary',
+    selector: '.glass-card, .rounded-2xl, .hover\\:shadow-xl',
     maxDistance: 350
   });
 
-  // Add keyframes for color blast animation with improved easing
+  // Add keyframes for color blast animation
   useEffect(() => {
     const style = document.createElement('style');
     style.textContent = `
@@ -86,18 +85,6 @@ const Index = () => {
     return () => {
       document.head.removeChild(style);
     };
-  }, []);
-
-  // Add scroll progress tracker for potential scroll-based animations
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const progress = (window.scrollY / totalHeight) * 100;
-      setScrollProgress(progress);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -144,17 +131,6 @@ const Index = () => {
         y={colorBlast.y} 
         onAnimationEnd={handleColorBlastEnd} 
       />
-      
-      {/* Scroll progress indicator */}
-      <div 
-        className="fixed top-0 left-0 h-1 bg-holi-gradient z-50 transition-all duration-200 ease-out" 
-        style={{ 
-          width: `${scrollProgress}%`,
-          backgroundSize: '200% 100%',
-          backgroundPosition: `${scrollProgress}% 0`
-        }}
-      ></div>
-
       <main className="flex-grow" ref={containerRef}>
         <HeroSection />
         <div id="venue">
