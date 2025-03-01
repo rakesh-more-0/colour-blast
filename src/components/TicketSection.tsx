@@ -1,9 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { Check, Star, Ticket, X } from 'lucide-react';
 import { toast } from "@/components/ui/use-toast";
 
-// Color Blast animation component
 const ColorBlast = ({ isActive, x, y, onAnimationEnd }: { isActive: boolean; x: number; y: number; onAnimationEnd: () => void }) => {
   const colors = [
     'bg-holi-pink',
@@ -48,7 +46,6 @@ const TicketSection = () => {
   const [colorPowders, setColorPowders] = useState<Array<{ color: string; x: number; y: number; size: number; delay: number }>>([]);
   const [colorBlast, setColorBlast] = useState<{ active: boolean, x: number, y: number }>({ active: false, x: 0, y: 0 });
 
-  // Generate random color powders for background effect
   useEffect(() => {
     const colors = [
       'bg-holi-pink',
@@ -70,7 +67,6 @@ const TicketSection = () => {
     setColorPowders(powders);
   }, []);
 
-  // Add keyframes for color blast animation
   useEffect(() => {
     const style = document.createElement('style');
     style.textContent = `
@@ -160,14 +156,12 @@ const TicketSection = () => {
     setSelectedTicket(ticketId);
     setShowTicketModal(true);
     
-    // Trigger color blast animation at click position
     setColorBlast({
       active: true,
       x: event.clientX,
       y: event.clientY
     });
     
-    // Show a toast notification
     toast({
       title: "Ticket Selected",
       description: `You've selected the ${tickets.find(t => t.id === ticketId)?.name}`,
@@ -181,7 +175,6 @@ const TicketSection = () => {
 
   return (
     <section id="tickets" className="py-20 relative overflow-hidden">
-      {/* Color powder background elements */}
       {colorPowders.map((powder, index) => (
         <div
           key={index}
@@ -196,10 +189,8 @@ const TicketSection = () => {
         />
       ))}
       
-      {/* Semi-transparent overlay for better text readability */}
       <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
       
-      {/* Color blast animation */}
       <ColorBlast 
         isActive={colorBlast.active} 
         x={colorBlast.x} 
@@ -237,7 +228,6 @@ const TicketSection = () => {
                 </div>
               )}
               
-              {/* Decorative color splashes */}
               <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-holi-pink opacity-70 blur-sm"></div>
               <div className="absolute -bottom-2 -left-2 w-6 h-6 rounded-full bg-holi-green opacity-70 blur-sm"></div>
               
@@ -290,12 +280,11 @@ const TicketSection = () => {
         
         <p className="text-center text-muted-foreground mt-10 relative">
           <span className="relative z-10">
-            Early bird discounts available for a limited time. <a href="https://wa.me/919607820101" target="_blank" rel="noopener noreferrer" className="text-holi-purple font-medium hover:text-holi-pink transition-colors">Book directly via WhatsApp</a> 9607820101
+            Early bird discounts available for a limited time. <a href="https://api.whatsapp.com/send/?phone=%2B919607820101&text=Hello+Colour+Blast,+I+want+to+inquire+about+tickets!" target="_blank" rel="noopener noreferrer" className="text-holi-purple font-medium hover:text-holi-pink transition-colors">Book directly via WhatsApp</a> 9607820101
           </span>
         </p>
       </div>
 
-      {/* Ticket Purchase Modal */}
       {showTicketModal && (
         <div 
           className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
@@ -305,7 +294,6 @@ const TicketSection = () => {
             className="bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden max-w-md w-full shadow-2xl relative"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Decorative elements */}
             <div className="absolute -top-10 -right-10 w-20 h-20 bg-holi-pink opacity-50 rounded-full blur-xl"></div>
             <div className="absolute -bottom-10 -left-10 w-20 h-20 bg-holi-blue opacity-50 rounded-full blur-xl"></div>
             
@@ -348,10 +336,8 @@ const TicketSection = () => {
                   rel="noopener noreferrer"
                   className="w-full bg-holi-gradient text-white py-3 px-4 rounded-xl font-medium text-center hover:shadow-lg hover:shadow-purple-200 transition-all transform hover:-translate-y-1"
                   onClick={(e) => {
-                    // Prevent modal from closing
                     e.stopPropagation();
                     
-                    // Trigger color blast at button position
                     const rect = e.currentTarget.getBoundingClientRect();
                     setColorBlast({
                       active: true,
@@ -364,20 +350,18 @@ const TicketSection = () => {
                 </a>
                 
                 <a 
-                  href="https://wa.me/919607820101"
+                  href="https://api.whatsapp.com/send/?phone=%2B919607820101&text=Hello+Colour+Blast,+I+want+to+inquire+about+tickets!"
                   target="_blank"
                   rel="noopener noreferrer" 
                   className="w-full bg-white border-2 border-holi-purple text-holi-purple py-3 px-4 rounded-xl font-medium text-center hover:bg-holi-purple hover:text-white transition-colors transform hover:-translate-y-1"
                   onClick={(e) => {
-                    // Prevent modal from closing
                     e.stopPropagation();
                     
-                    // Trigger color blast at button position
                     const rect = e.currentTarget.getBoundingClientRect();
                     setColorBlast({
                       active: true,
                       x: rect.left + rect.width / 2,
-                      y: rect.top + rect.height / 2
+                      y: rect.top + rect.height /2
                     });
                   }}
                 >
