@@ -37,6 +37,11 @@ const HeroSection = () => {
           <div className="text-center lg:text-left space-y-6">
             <div className="space-y-4 opacity-0 animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <ColorfulBanner date="14TH MARCH" time="10:00 AM ONWARDS" />
+              
+              {/* Organization info added here */}
+              <div className="text-sm font-medium text-muted-foreground">
+                Organised by <a href="https://www.instagram.com/varad_event/" target="_blank" rel="noopener noreferrer" className="text-holi-purple hover:underline">Varad Events</a> • Managed by <a href="https://www.instagram.com/richpointdigital?igsh=MWFzN2djcXlxdjd4cg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-holi-purple hover:underline">RichPoint Digital</a>
+              </div>
             </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mt-6 opacity-0 animate-fade-in" style={{ animationDelay: '0.5s' }}>
@@ -67,7 +72,6 @@ const HeroSection = () => {
                 alt="Holi Festival Celebration" 
                 className="relative rounded-2xl shadow-2xl z-10 w-full h-auto"
               />
-              {/* Removed the COLOUR BLAST footer that was here */}
             </div>
           </div>
         </div>
