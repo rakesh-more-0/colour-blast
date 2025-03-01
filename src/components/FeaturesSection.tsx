@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { Music, Utensils, PaintBucket, Sparkles, Camera, Shield, X } from 'lucide-react';
+import { Music, Utensils, PaintBucket, Sparkles, Camera, Shield, X, Droplets, Umbrella } from 'lucide-react';
 import { useMouseGlow } from '../hooks/useMouseGlow';
 
 const FeaturesSection = () => {
@@ -45,7 +45,37 @@ const FeaturesSection = () => {
       icon: <Sparkles className="w-10 h-10 text-holi-yellow" />,
       title: "Color Blast Countdown",
       description: "Join the exciting color blast countdown - a spectacular highlight of the event",
-      details: "The Color Blast Countdown is our signature event happening at 12 noon. Everyone gathers in the central area as our MC leads a countdown, followed by thousands of attendees throwing colors in the air simultaneously, creating a breathtaking spectacle of colors against the sky."
+      details: (
+        <div className="space-y-6">
+          <p>The Color Blast Countdown is our signature event happening at 12 noon. Everyone gathers in the central area as our MC leads a countdown, followed by thousands of attendees throwing colors in the air simultaneously, creating a breathtaking spectacle of colors against the sky.</p>
+          
+          <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg border border-blue-200">
+            <div className="flex items-center gap-3 mb-3">
+              <Droplets className="w-6 h-6 text-blue-500" />
+              <h4 className="font-bold text-blue-700">Rain Dance – The Ultimate Holi Experience!</h4>
+            </div>
+            
+            <p className="mb-4">Get ready to dance your heart out under the showers of joy! Our massive Rain Dance setup will keep the energy high as you groove to electrifying beats by DJ SWAP INDIA.</p>
+            
+            <ul className="space-y-2 mb-4">
+              <li className="flex items-start gap-2">
+                <span className="text-blue-500 flex-shrink-0">💃</span>
+                <span>Dance in the rain to your favorite Holi anthems!</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-500 flex-shrink-0">🎶</span>
+                <span>Non-stop music, vibrant colors, and unlimited fun!</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-blue-500 flex-shrink-0">🚿</span>
+                <span>Refreshing water showers to keep the Holi vibe alive!</span>
+              </li>
+            </ul>
+            
+            <p className="italic text-blue-700">Step into the splash zone and let the rain amplify your Holi celebration! 🌈💦🔥</p>
+          </div>
+        </div>
+      )
     },
     {
       icon: <Camera className="w-10 h-10 text-holi-blue" />,
@@ -126,9 +156,9 @@ const FeaturesSection = () => {
                 </div>
               </div>
               
-              <p className="text-muted-foreground">
+              <div className="text-muted-foreground">
                 {modalContent.description}
-              </p>
+              </div>
               
               <button
                 onClick={() => setModalOpen(false)}

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ColorfulBanner from './ColorfulBanner';
+import { Droplets } from 'lucide-react';
 
 const HeroSection = () => {
   const colorRef = useRef<HTMLDivElement>(null);
@@ -54,6 +55,10 @@ const HeroSection = () => {
               </a>
               <Link to="/about" className="holi-btn-secondary">
                 Learn More
+              </Link>
+              <Link to="#venue" className="flex items-center text-blue-600 gap-1 font-medium hover:text-blue-800 transition-colors">
+                <Droplets className="w-4 h-4" />
+                Rain Dance
               </Link>
             </div>
           </div>
