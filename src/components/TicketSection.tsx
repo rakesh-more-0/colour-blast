@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Check, Star, Ticket, X } from 'lucide-react';
 import { toast } from "@/components/ui/use-toast";
@@ -92,8 +93,8 @@ const TicketSection = () => {
   const tickets = [
     {
       id: "single",
-      name: "Single Ticket (Stag)",
-      price: "₹299",
+      name: "Single Pass",
+      price: "₹349",
       features: [
         "Access to Colour Blast celebration",
         "Organic colors",
@@ -101,13 +102,13 @@ const TicketSection = () => {
         "Food & beverages (to be purchased)",
       ],
       highlight: false,
-      buttonText: "Get Tickets",
+      buttonText: "Get Pass",
       priceSubtext: "per person"
     },
     {
       id: "couple",
-      name: "Couple Ticket",
-      price: "₹499",
+      name: "Couple Pass",
+      price: "₹599",
       features: [
         "Entry for 2 people",
         "Organic colors",
@@ -115,13 +116,13 @@ const TicketSection = () => {
         "Food & beverages (to be purchased)",
       ],
       highlight: false,
-      buttonText: "Get Couple Ticket",
+      buttonText: "Get Couple Pass",
       priceSubtext: "per couple"
     },
     {
       id: "group",
-      name: "Group Ticket",
-      price: "₹1249",
+      name: "Group Pass",
+      price: "₹1399",
       features: [
         "Entry for 5 people",
         "Organic colors",
@@ -130,13 +131,13 @@ const TicketSection = () => {
         "Group photo opportunity",
       ],
       highlight: false,
-      buttonText: "Get Group Ticket",
+      buttonText: "Get Group Pass",
       priceSubtext: "per group of 5"
     },
     {
       id: "vip",
-      name: "VIP Ticket",
-      price: "₹1999",
+      name: "VIP Pass",
+      price: "₹2499",
       features: [
         "Entry for 5 people",
         "Exclusive VIP lounge access",
@@ -147,7 +148,7 @@ const TicketSection = () => {
         "Priority entry",
       ],
       highlight: false,
-      buttonText: "Get VIP Ticket",
+      buttonText: "Get VIP Pass",
       priceSubtext: "per group of 5"
     }
   ];
