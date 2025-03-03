@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Check, Star, Ticket, X } from 'lucide-react';
 import { toast } from "@/components/ui/use-toast";
@@ -92,9 +91,9 @@ const TicketSection = () => {
 
   const tickets = [
     {
-      id: "single",
-      name: "Single Pass",
-      price: "₹349",
+      id: "general",
+      name: "General Pass",
+      price: "₹299",
       features: [
         "Access to Colour Blast celebration",
         "Organic colors",
@@ -102,13 +101,13 @@ const TicketSection = () => {
         "Food & beverages (to be purchased)",
       ],
       highlight: false,
-      buttonText: "Get Pass",
+      buttonText: "Get General Pass",
       priceSubtext: "per person"
     },
     {
-      id: "couple",
-      name: "Couple Pass",
-      price: "₹599",
+      id: "general-couple",
+      name: "General Couple Pass",
+      price: "₹499",
       features: [
         "Entry for 2 people",
         "Organic colors",
@@ -116,40 +115,39 @@ const TicketSection = () => {
         "Food & beverages (to be purchased)",
       ],
       highlight: false,
-      buttonText: "Get Couple Pass",
+      buttonText: "Get General Couple Pass",
       priceSubtext: "per couple"
-    },
-    {
-      id: "group",
-      name: "Group Pass",
-      price: "₹1399",
-      features: [
-        "Entry for 5 people",
-        "Organic colors",
-        "Live DJ performances",
-        "Food & beverages (to be purchased)",
-        "Group photo opportunity",
-      ],
-      highlight: false,
-      buttonText: "Get Group Pass",
-      priceSubtext: "per group of 5"
     },
     {
       id: "vip",
       name: "VIP Pass",
-      price: "₹2499",
+      price: "₹499",
       features: [
-        "Entry for 5 people",
-        "Exclusive VIP lounge access",
         "Premium organic colors",
-        "VIP Lounge with premium perks",
-        "Better DJ near the stage for an immersive music experience",
-        "Reserved tables for comfort and a prime view of the action",
+        "VIP Lounge access",
+        "Better DJ near the stage",
+        "Premium perks",
         "Priority entry",
       ],
       highlight: false,
       buttonText: "Get VIP Pass",
-      priceSubtext: "per group of 5"
+      priceSubtext: "per person"
+    },
+    {
+      id: "vip-couple",
+      name: "VIP Couple Pass",
+      price: "₹749",
+      features: [
+        "Entry for 2 people",
+        "Premium organic colors",
+        "VIP Lounge access",
+        "Better DJ near the stage",
+        "Premium perks",
+        "Priority entry",
+      ],
+      highlight: false,
+      buttonText: "Get VIP Couple Pass",
+      priceSubtext: "per couple"
     }
   ];
 
