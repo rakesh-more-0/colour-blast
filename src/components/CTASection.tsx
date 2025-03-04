@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Copy, Check } from 'lucide-react';
+import { Copy, Check, BookOpen, Star, Ticket, MessagesSquare } from 'lucide-react';
 
 const CTASection = () => {
   const [copied, setCopied] = useState(false);
@@ -60,30 +60,50 @@ const CTASection = () => {
               <span className="relative z-10">Book Your Tickets Now!</span>
               <span className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 opacity-20"></span>
             </div>
-            <a 
-              href="https://api.whatsapp.com/send/?phone=%2B919607820101&text=Hello+Colour+Blast,+I+want+to+inquire+about+tickets!" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className={`holi-btn-secondary px-8 py-4 text-lg transition-transform ${animateWhatsApp ? 'scale-95' : ''}`}
-              onClick={handleWhatsAppClick}
-            >
-              WhatsApp Booking
-            </a>
+            
+            {/* 1. BookMyShow with logo */}
             <a 
               href="https://in.bookmyshow.com/events/colour-blast-2k25-holi-celebration-in-pune-2025/ET00436603" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="holi-btn-tertiary px-8 py-4 text-lg transition-transform"
+              className="holi-btn-tertiary px-8 py-4 text-lg transition-transform flex items-center gap-2"
             >
-              BookMyShow
+              <BookOpen size={18} />
+              <span>BookMyShow</span>
             </a>
+            
+            {/* 2. District by Zomato with logo */}
             <a 
               href="https://www.district.in/colour-blast-2k25-the-ultimate-holi-celebration-in-pune-mar14-2025/event" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="px-8 py-4 text-lg transition-transform bg-white border-2 border-amber-600 text-amber-600 rounded-full hover:bg-amber-600 hover:text-white"
+              className="px-8 py-4 text-lg transition-transform bg-white border-2 border-amber-600 text-amber-600 rounded-full hover:bg-amber-600 hover:text-white flex items-center gap-2"
             >
-              District by Zomato
+              <Star size={18} />
+              <span>District by Zomato</span>
+            </a>
+            
+            {/* 3. Mepass with logo */}
+            <a 
+              href="https://mepass.in/events/color-blast" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-8 py-4 text-lg transition-transform bg-white border-2 border-holi-blue text-holi-blue rounded-full hover:bg-holi-blue hover:text-white flex items-center gap-2"
+            >
+              <Ticket size={18} />
+              <span>Mepass</span>
+            </a>
+            
+            {/* 4. WhatsApp with logo */}
+            <a 
+              href="https://api.whatsapp.com/send/?phone=%2B919607820101&text=Hello+Colour+Blast,+I+want+to+inquire+about+tickets!" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={`holi-btn-secondary px-8 py-4 text-lg transition-transform ${animateWhatsApp ? 'scale-95' : ''} flex items-center gap-2`}
+              onClick={handleWhatsAppClick}
+            >
+              <MessagesSquare size={18} />
+              <span>WhatsApp Booking</span>
             </a>
           </div>
           

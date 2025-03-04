@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Check, Star, Ticket, X } from 'lucide-react';
+import { Check, Star, Ticket, X, BookOpen, MessagesSquare } from 'lucide-react';
 import { toast } from "@/components/ui/use-toast";
 
 const ColorBlast = ({ isActive, x, y, onAnimationEnd }: { isActive: boolean; x: number; y: number; onAnimationEnd: () => void }) => {
@@ -369,10 +369,50 @@ const TicketSection = () => {
               
               <div className="grid grid-cols-1 gap-4">
                 <a 
+                  href="https://in.bookmyshow.com/events/colour-blast-2k25-holi-celebration-in-pune-2025/ET00436603"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-white border-2 border-red-500 text-red-500 py-3 px-4 rounded-xl font-medium text-center hover:bg-red-500 hover:text-white transition-colors transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    setColorBlast({
+                      active: true,
+                      x: rect.left + rect.width / 2,
+                      y: rect.top + rect.height /2
+                    });
+                  }}
+                >
+                  <BookOpen size={18} />
+                  <span>BookMyShow</span>
+                </a>
+                
+                <a 
+                  href="https://www.district.in/colour-blast-2k25-the-ultimate-holi-celebration-in-pune-mar14-2025/event" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-white border-2 border-amber-600 text-amber-600 py-3 px-4 rounded-xl font-medium text-center hover:bg-amber-600 hover:text-white transition-colors transform hover:-translate-y-1 flex items-center justify-center gap-2"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    setColorBlast({
+                      active: true,
+                      x: rect.left + rect.width / 2,
+                      y: rect.top + rect.height /2
+                    });
+                  }}
+                >
+                  <Star size={18} />
+                  <span>District by Zomato</span>
+                </a>
+                
+                <a 
                   href="https://mepass.in/events/color-blast" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-holi-gradient text-white py-3 px-4 rounded-xl font-medium text-center hover:shadow-lg hover:shadow-purple-200 transition-all transform hover:-translate-y-1"
+                  className="w-full bg-holi-gradient text-white py-3 px-4 rounded-xl font-medium text-center hover:shadow-lg hover:shadow-purple-200 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2"
                   onClick={(e) => {
                     e.stopPropagation();
                     
@@ -384,14 +424,15 @@ const TicketSection = () => {
                     });
                   }}
                 >
-                  Mepass
+                  <Ticket size={18} />
+                  <span>Mepass</span>
                 </a>
                 
                 <a 
                   href="https://api.whatsapp.com/send/?phone=%2B919607820101&text=Hello+Colour+Blast,+I+want+to+inquire+about+tickets!"
                   target="_blank"
                   rel="noopener noreferrer" 
-                  className="w-full bg-white border-2 border-holi-purple text-holi-purple py-3 px-4 rounded-xl font-medium text-center hover:bg-holi-purple hover:text-white transition-colors transform hover:-translate-y-1"
+                  className="w-full bg-white border-2 border-holi-purple text-holi-purple py-3 px-4 rounded-xl font-medium text-center hover:bg-holi-purple hover:text-white transition-colors transform hover:-translate-y-1 flex items-center justify-center gap-2"
                   onClick={(e) => {
                     e.stopPropagation();
                     
@@ -403,45 +444,8 @@ const TicketSection = () => {
                     });
                   }}
                 >
-                  WhatsApp Booking
-                </a>
-                
-                <a 
-                  href="https://in.bookmyshow.com/events/colour-blast-2k25-holi-celebration-in-pune-2025/ET00436603"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-white border-2 border-red-500 text-red-500 py-3 px-4 rounded-xl font-medium text-center hover:bg-red-500 hover:text-white transition-colors transform hover:-translate-y-1"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    
-                    const rect = e.currentTarget.getBoundingClientRect();
-                    setColorBlast({
-                      active: true,
-                      x: rect.left + rect.width / 2,
-                      y: rect.top + rect.height /2
-                    });
-                  }}
-                >
-                  BookMyShow
-                </a>
-                
-                <a 
-                  href="https://www.district.in/colour-blast-2k25-the-ultimate-holi-celebration-in-pune-mar14-2025/event" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-white border-2 border-amber-600 text-amber-600 py-3 px-4 rounded-xl font-medium text-center hover:bg-amber-600 hover:text-white transition-colors transform hover:-translate-y-1"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    
-                    const rect = e.currentTarget.getBoundingClientRect();
-                    setColorBlast({
-                      active: true,
-                      x: rect.left + rect.width / 2,
-                      y: rect.top + rect.height /2
-                    });
-                  }}
-                >
-                  District by Zomato
+                  <MessagesSquare size={18} />
+                  <span>WhatsApp Booking</span>
                 </a>
               </div>
             </div>
