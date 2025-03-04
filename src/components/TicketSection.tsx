@@ -426,7 +426,7 @@ const TicketSection = () => {
                 </a>
                 
                 <a 
-                  href="https://www.zomato.com/district/" 
+                  href="https://www.district.in/colour-blast-2k25-the-ultimate-holi-celebration-in-pune-mar14-2025/event" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-white border-2 border-amber-600 text-amber-600 py-3 px-4 rounded-xl font-medium text-center hover:bg-amber-600 hover:text-white transition-colors transform hover:-translate-y-1"

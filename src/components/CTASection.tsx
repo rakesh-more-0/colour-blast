@@ -78,7 +78,7 @@ const CTASection = () => {
               BookMyShow
             </a>
             <a 
-              href="https://www.zomato.com/district/" 
+              href="https://www.district.in/colour-blast-2k25-the-ultimate-holi-celebration-in-pune-mar14-2025/event" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="px-8 py-4 text-lg transition-transform bg-white border-2 border-amber-600 text-amber-600 rounded-full hover:bg-amber-600 hover:text-white"
