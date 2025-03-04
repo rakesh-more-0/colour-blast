@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Check, Star, Ticket, X } from 'lucide-react';
 import { toast } from "@/components/ui/use-toast";
@@ -105,8 +106,8 @@ const TicketSection = () => {
       priceSubtext: "per person"
     },
     {
-      id: "general-couple",
-      name: "General Couple Pass",
+      id: "couple",
+      name: "Couple Entry",
       price: "₹499",
       features: [
         "Entry for 2 people",
@@ -115,7 +116,7 @@ const TicketSection = () => {
         "Food & beverages (to be purchased)",
       ],
       highlight: false,
-      buttonText: "Get General Couple Pass",
+      buttonText: "Get Couple Entry",
       priceSubtext: "per couple"
     },
     {
@@ -123,10 +124,11 @@ const TicketSection = () => {
       name: "VIP Pass",
       price: "₹499",
       features: [
+        "Entry for 1 person",
+        "Exclusive VIP lounge access",
         "Premium organic colors",
-        "VIP Lounge access",
-        "Better DJ near the stage",
-        "Premium perks",
+        "Better DJ near the stage for an immersive music experience",
+        "Reserved tables for comfort and a prime view of the action",
         "Priority entry",
       ],
       highlight: false,
@@ -134,19 +136,20 @@ const TicketSection = () => {
       priceSubtext: "per person"
     },
     {
-      id: "vip-couple",
-      name: "VIP Couple Pass",
+      id: "couplevip",
+      name: "Couple VIP",
       price: "₹749",
       features: [
         "Entry for 2 people",
+        "Exclusive VIP lounge access",
         "Premium organic colors",
-        "VIP Lounge access",
-        "Better DJ near the stage",
-        "Premium perks",
+        "VIP Lounge with premium perks",
+        "Better DJ near the stage for an immersive music experience",
+        "Reserved tables for comfort and a prime view of the action",
         "Priority entry",
       ],
       highlight: false,
-      buttonText: "Get VIP Couple Pass",
+      buttonText: "Get Couple VIP",
       priceSubtext: "per couple"
     }
   ];
