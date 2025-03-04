@@ -77,6 +77,14 @@ const CTASection = () => {
             >
               BookMyShow
             </a>
+            <a 
+              href="https://www.zomato.com/district/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-8 py-4 text-lg transition-transform bg-white border-2 border-amber-600 text-amber-600 rounded-full hover:bg-amber-600 hover:text-white"
+            >
+              District by Zomato
+            </a>
           </div>
           
           {/* Contact Number with Copy */}

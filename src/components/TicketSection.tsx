@@ -424,6 +424,25 @@ const TicketSection = () => {
                 >
                   BookMyShow
                 </a>
+                
+                <a 
+                  href="https://www.zomato.com/district/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-white border-2 border-amber-600 text-amber-600 py-3 px-4 rounded-xl font-medium text-center hover:bg-amber-600 hover:text-white transition-colors transform hover:-translate-y-1"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    setColorBlast({
+                      active: true,
+                      x: rect.left + rect.width / 2,
+                      y: rect.top + rect.height /2
+                    });
+                  }}
+                >
+                  District by Zomato
+                </a>
               </div>
             </div>
           </div>
