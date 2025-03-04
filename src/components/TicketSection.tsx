@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Check, Star, Ticket, X } from 'lucide-react';
 import { toast } from "@/components/ui/use-toast";
@@ -92,9 +91,9 @@ const TicketSection = () => {
 
   const tickets = [
     {
-      id: "single",
-      name: "Single Pass",
-      price: "₹349",
+      id: "general",
+      name: "General Pass",
+      price: "₹299",
       features: [
         "Access to Colour Blast celebration",
         "Organic colors",
@@ -102,13 +101,13 @@ const TicketSection = () => {
         "Food & beverages (to be purchased)",
       ],
       highlight: false,
-      buttonText: "Get Pass",
+      buttonText: "Get General Pass",
       priceSubtext: "per person"
     },
     {
       id: "couple",
-      name: "Couple Pass",
-      price: "₹599",
+      name: "Couple Entry",
+      price: "₹499",
       features: [
         "Entry for 2 people",
         "Organic colors",
@@ -116,13 +115,13 @@ const TicketSection = () => {
         "Food & beverages (to be purchased)",
       ],
       highlight: false,
-      buttonText: "Get Couple Pass",
+      buttonText: "Get Couple Entry",
       priceSubtext: "per couple"
     },
     {
       id: "group",
-      name: "Group Pass",
-      price: "₹1399",
+      name: "Group Of 5",
+      price: "₹1299",
       features: [
         "Entry for 5 people",
         "Organic colors",
@@ -137,7 +136,37 @@ const TicketSection = () => {
     {
       id: "vip",
       name: "VIP Pass",
-      price: "₹2499",
+      price: "₹499",
+      features: [
+        "Entry for 1 person",
+        "Exclusive VIP lounge access",
+        "Premium organic colors",
+        "Better DJ near the stage for an immersive music experience",
+        "Priority entry",
+      ],
+      highlight: false,
+      buttonText: "Get VIP Pass",
+      priceSubtext: "per person"
+    },
+    {
+      id: "coupleVip",
+      name: "Couple VIP",
+      price: "₹799",
+      features: [
+        "Entry for 2 people",
+        "Exclusive VIP lounge access",
+        "Premium organic colors",
+        "Better DJ near the stage for an immersive music experience",
+        "Priority entry",
+      ],
+      highlight: false,
+      buttonText: "Get Couple VIP",
+      priceSubtext: "per couple"
+    },
+    {
+      id: "groupVip",
+      name: "VIP Group of 5",
+      price: "₹1999",
       features: [
         "Entry for 5 people",
         "Exclusive VIP lounge access",
@@ -148,7 +177,7 @@ const TicketSection = () => {
         "Priority entry",
       ],
       highlight: false,
-      buttonText: "Get VIP Pass",
+      buttonText: "Get VIP Group Pass",
       priceSubtext: "per group of 5"
     }
   ];
@@ -211,7 +240,7 @@ const TicketSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           {tickets.map((ticket, index) => (
             <div 
               key={index} 
