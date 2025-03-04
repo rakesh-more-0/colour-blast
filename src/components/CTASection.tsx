@@ -52,7 +52,7 @@ const CTASection = () => {
             Join us for an unforgettable celebration of colors, music, dance, and joy at Pune's biggest Colour Blast
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 flex-wrap">
             <div 
               onClick={() => handleNavigate('/#tickets')} 
               className="holi-btn-gradient px-8 py-4 text-lg relative overflow-hidden group cursor-pointer"
@@ -68,6 +68,14 @@ const CTASection = () => {
               onClick={handleWhatsAppClick}
             >
               WhatsApp Booking
+            </a>
+            <a 
+              href="https://in.bookmyshow.com/events/colour-blast-2k25-holi-celebration-in-pune-2025/ET00436603" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="holi-btn-tertiary px-8 py-4 text-lg transition-transform"
+            >
+              BookMyShow
             </a>
           </div>
           

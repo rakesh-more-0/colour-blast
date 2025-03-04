@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Check, Star, Ticket, X } from 'lucide-react';
 import { toast } from "@/components/ui/use-toast";
@@ -407,10 +406,24 @@ const TicketSection = () => {
                   WhatsApp Booking
                 </a>
                 
-                <div className="w-full border-2 border-red-500 text-red-500 py-3 px-4 rounded-xl font-medium text-center bg-white relative overflow-hidden">
-                  <span className="relative z-10">BookMyShow - Tickets will be available soon</span>
-                  <p className="text-xs mt-1 text-muted-foreground">Till then, you can book at Mepass and WhatsApp</p>
-                </div>
+                <a 
+                  href="https://in.bookmyshow.com/events/colour-blast-2k25-holi-celebration-in-pune-2025/ET00436603"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-white border-2 border-red-500 text-red-500 py-3 px-4 rounded-xl font-medium text-center hover:bg-red-500 hover:text-white transition-colors transform hover:-translate-y-1"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    setColorBlast({
+                      active: true,
+                      x: rect.left + rect.width / 2,
+                      y: rect.top + rect.height /2
+                    });
+                  }}
+                >
+                  BookMyShow
+                </a>
               </div>
             </div>
           </div>
