@@ -92,9 +92,9 @@ const TicketSection = () => {
 
   const tickets = [
     {
-      id: "general",
-      name: "General Pass",
-      price: "₹299",
+      id: "single",
+      name: "Single Pass",
+      price: "₹349",
       features: [
         "Access to Colour Blast celebration",
         "Organic colors",
@@ -102,13 +102,13 @@ const TicketSection = () => {
         "Food & beverages (to be purchased)",
       ],
       highlight: false,
-      buttonText: "Get General Pass",
+      buttonText: "Get Pass",
       priceSubtext: "per person"
     },
     {
       id: "couple",
-      name: "Couple Entry",
-      price: "₹499",
+      name: "Couple Pass",
+      price: "₹599",
       features: [
         "Entry for 2 people",
         "Organic colors",
@@ -116,31 +116,30 @@ const TicketSection = () => {
         "Food & beverages (to be purchased)",
       ],
       highlight: false,
-      buttonText: "Get Couple Entry",
+      buttonText: "Get Couple Pass",
       priceSubtext: "per couple"
+    },
+    {
+      id: "group",
+      name: "Group Pass",
+      price: "₹1399",
+      features: [
+        "Entry for 5 people",
+        "Organic colors",
+        "Live DJ performances",
+        "Food & beverages (to be purchased)",
+        "Group photo opportunity",
+      ],
+      highlight: false,
+      buttonText: "Get Group Pass",
+      priceSubtext: "per group of 5"
     },
     {
       id: "vip",
       name: "VIP Pass",
-      price: "₹499",
+      price: "₹2499",
       features: [
-        "Entry for 1 person",
-        "Exclusive VIP lounge access",
-        "Premium organic colors",
-        "Better DJ near the stage for an immersive music experience",
-        "Reserved tables for comfort and a prime view of the action",
-        "Priority entry",
-      ],
-      highlight: false,
-      buttonText: "Get VIP Pass",
-      priceSubtext: "per person"
-    },
-    {
-      id: "couplevip",
-      name: "Couple VIP",
-      price: "₹749",
-      features: [
-        "Entry for 2 people",
+        "Entry for 5 people",
         "Exclusive VIP lounge access",
         "Premium organic colors",
         "VIP Lounge with premium perks",
@@ -149,8 +148,8 @@ const TicketSection = () => {
         "Priority entry",
       ],
       highlight: false,
-      buttonText: "Get Couple VIP",
-      priceSubtext: "per couple"
+      buttonText: "Get VIP Pass",
+      priceSubtext: "per group of 5"
     }
   ];
 
