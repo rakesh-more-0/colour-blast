@@ -92,9 +92,9 @@ const TicketSection = () => {
 
   const tickets = [
     {
-      id: "single",
-      name: "Single Pass",
-      price: "₹349",
+      id: "general",
+      name: "General Pass",
+      price: "₹299",
       features: [
         "Access to Colour Blast celebration",
         "Organic colors",
@@ -108,7 +108,7 @@ const TicketSection = () => {
     {
       id: "couple",
       name: "Couple Pass",
-      price: "₹599",
+      price: "₹499",
       features: [
         "Entry for 2 people",
         "Organic colors",
@@ -121,8 +121,8 @@ const TicketSection = () => {
     },
     {
       id: "group",
-      name: "Group Pass",
-      price: "₹1399",
+      name: "Group Of 5 Pass",
+      price: "₹1299",
       features: [
         "Entry for 5 people",
         "Organic colors",
@@ -132,12 +132,44 @@ const TicketSection = () => {
       ],
       highlight: false,
       buttonText: "Get Group Pass",
-      priceSubtext: "per group of 5"
+      priceSubtext: "group of 5"
     },
     {
       id: "vip",
       name: "VIP Pass",
-      price: "₹2499",
+      price: "₹499",
+      features: [
+        "Entry for 1 person",
+        "Exclusive VIP lounge access",
+        "Premium organic colors",
+        "Better DJ near the stage for an immersive music experience",
+        "Reserved area for comfort and a prime view of the action",
+        "Priority entry",
+      ],
+      highlight: false,
+      buttonText: "Get VIP Pass",
+      priceSubtext: "per person"
+    },
+    {
+      id: "vip-couple",
+      name: "VIP Couple Pass",
+      price: "₹799",
+      features: [
+        "Entry for 2 people",
+        "Exclusive VIP lounge access",
+        "Premium organic colors",
+        "Better DJ near the stage for an immersive music experience",
+        "Reserved area for comfort and a prime view of the action",
+        "Priority entry",
+      ],
+      highlight: false,
+      buttonText: "Get VIP Couple Pass",
+      priceSubtext: "per couple"
+    },
+    {
+      id: "vip-group",
+      name: "VIP Group of 5 Pass",
+      price: "₹1999",
       features: [
         "Entry for 5 people",
         "Exclusive VIP lounge access",
@@ -148,8 +180,8 @@ const TicketSection = () => {
         "Priority entry",
       ],
       highlight: false,
-      buttonText: "Get VIP Pass",
-      priceSubtext: "per group of 5"
+      buttonText: "Get VIP Group Pass",
+      priceSubtext: "group of 5"
     }
   ];
 
@@ -211,7 +243,7 @@ const TicketSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           {tickets.map((ticket, index) => (
             <div 
               key={index} 
@@ -244,10 +276,12 @@ const TicketSection = () => {
                     {ticket.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">
                         <Check size={16} className={`mr-2 flex-shrink-0 mt-1 ${
-                          index % 4 === 0 ? 'text-holi-blue' :
-                          index % 4 === 1 ? 'text-holi-purple' :
-                          index % 4 === 2 ? 'text-holi-orange' :
-                          'text-holi-green'
+                          index % 6 === 0 ? 'text-holi-blue' :
+                          index % 6 === 1 ? 'text-holi-purple' :
+                          index % 6 === 2 ? 'text-holi-orange' :
+                          index % 6 === 3 ? 'text-holi-green' :
+                          index % 6 === 4 ? 'text-holi-pink' :
+                          'text-holi-yellow'
                         }`} />
                         <span className="text-sm">{feature}</span>
                       </li>
@@ -259,14 +293,18 @@ const TicketSection = () => {
                     className={`w-full block text-center py-3 px-4 rounded-xl font-medium hover:shadow-lg transition-all text-sm relative overflow-hidden group`}
                     style={{
                       background: 'linear-gradient(45deg, var(--tw-gradient-from), var(--tw-gradient-to))',
-                      '--tw-gradient-from': index % 4 === 0 ? '#00D4F5' : 
-                                           index % 4 === 1 ? '#AB20FD' : 
-                                           index % 4 === 2 ? '#FF7747' : 
-                                           '#FFD233',
-                      '--tw-gradient-to': index % 4 === 0 ? '#AB20FD' : 
-                                         index % 4 === 1 ? '#FF3EA5' : 
-                                         index % 4 === 2 ? '#FFD233' : 
-                                         '#00FF94',
+                      '--tw-gradient-from': index % 6 === 0 ? '#00D4F5' : 
+                                           index % 6 === 1 ? '#AB20FD' : 
+                                           index % 6 === 2 ? '#FF7747' : 
+                                           index % 6 === 3 ? '#FFD233' :
+                                           index % 6 === 4 ? '#FF3EA5' :
+                                           '#00FF94',
+                      '--tw-gradient-to': index % 6 === 0 ? '#AB20FD' : 
+                                         index % 6 === 1 ? '#FF3EA5' : 
+                                         index % 6 === 2 ? '#FFD233' : 
+                                         index % 6 === 3 ? '#00FF94' :
+                                         index % 6 === 4 ? '#00D4F5' :
+                                         '#AB20FD',
                       color: 'white'
                     } as React.CSSProperties}
                   >
